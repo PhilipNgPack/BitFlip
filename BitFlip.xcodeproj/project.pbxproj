@@ -24,6 +24,7 @@
 		48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */; };
 		48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D652311F69A008E589B /* Prob+CoreDataClass.swift */; };
 		48561D6A2311F69A008E589B /* Prob+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */; };
+		48561D6D2311FA05008E589B /* FlipSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D6C2311FA05008E589B /* FlipSystem.swift */; };
 		48E83A382311F3E400D07DA5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A372311F3E400D07DA5 /* CoreDataManager.swift */; };
 		DBC871A69ADD6C314FE91BAE /* Pods_BitFlip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */; };
 		ED135AD684E8B0EFE453FB0E /* Pods_BitFlipTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B779EB21B30B96015376688B /* Pods_BitFlipTests.framework */; };
@@ -64,6 +65,7 @@
 		48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48561D652311F69A008E589B /* Prob+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataClass.swift"; sourceTree = "<group>"; };
 		48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		48561D6C2311FA05008E589B /* FlipSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipSystem.swift; sourceTree = "<group>"; };
 		48E83A372311F3E400D07DA5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		66A0124BED005361AB0D1D8C /* Pods-BitFlipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitFlipTests.release.xcconfig"; path = "Target Support Files/Pods-BitFlipTests/Pods-BitFlipTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitFlip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 		48096D372311E796007FF518 /* BitFlip */ = {
 			isa = PBXGroup;
 			children = (
+				48561D6B2311F998008E589B /* GameSystems */,
 				48096D602311E829007FF518 /* Assets */,
 				48096D5F2311E81C007FF518 /* Model */,
 				48096D5E2311E813007FF518 /* History */,
@@ -199,6 +202,14 @@
 				48096D422311E796007FF518 /* Assets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		48561D6B2311F998008E589B /* GameSystems */ = {
+			isa = PBXGroup;
+			children = (
+				48561D6C2311FA05008E589B /* FlipSystem.swift */,
+			);
+			path = GameSystems;
 			sourceTree = "<group>";
 		};
 		8CA6F4D9531F767532F64C61 /* Pods */ = {
@@ -386,6 +397,7 @@
 				48561D6A2311F69A008E589B /* Prob+CoreDataProperties.swift in Sources */,
 				48096D412311E796007FF518 /* BitFlip.xcdatamodeld in Sources */,
 				48096D672311E845007FF518 /* GameController.swift in Sources */,
+				48561D6D2311FA05008E589B /* FlipSystem.swift in Sources */,
 				48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */,
 				48096D3B2311E796007FF518 /* MainController.swift in Sources */,
 				48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */,
