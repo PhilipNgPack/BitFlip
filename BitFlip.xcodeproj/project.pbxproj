@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		48096D392311E796007FF518 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D382311E796007FF518 /* AppDelegate.swift */; };
-		48096D3B2311E796007FF518 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D3A2311E796007FF518 /* ViewController.swift */; };
+		48096D3B2311E796007FF518 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D3A2311E796007FF518 /* MainController.swift */; };
 		48096D3E2311E796007FF518 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48096D3C2311E796007FF518 /* Main.storyboard */; };
 		48096D412311E796007FF518 /* BitFlip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48096D3F2311E796007FF518 /* BitFlip.xcdatamodeld */; };
 		48096D432311E796007FF518 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48096D422311E796007FF518 /* Assets.xcassets */; };
 		48096D462311E796007FF518 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48096D442311E796007FF518 /* LaunchScreen.storyboard */; };
 		48096D512311E796007FF518 /* BitFlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D502311E796007FF518 /* BitFlipTests.swift */; };
+		48096D632311E83B007FF518 /* GraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D612311E83B007FF518 /* GraphController.swift */; };
+		48096D642311E83B007FF518 /* GraphController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D622311E83B007FF518 /* GraphController.xib */; };
+		48096D672311E845007FF518 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D652311E845007FF518 /* GameController.swift */; };
+		48096D682311E845007FF518 /* GameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D662311E845007FF518 /* GameController.xib */; };
+		48096D6C2311E855007FF518 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D6A2311E855007FF518 /* HistoryController.swift */; };
+		48096D6D2311E855007FF518 /* HistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D6B2311E855007FF518 /* HistoryController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +35,7 @@
 /* Begin PBXFileReference section */
 		48096D352311E796007FF518 /* BitFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48096D382311E796007FF518 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		48096D3A2311E796007FF518 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48096D3A2311E796007FF518 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		48096D3D2311E796007FF518 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48096D402311E796007FF518 /* BitFlip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BitFlip.xcdatamodel; sourceTree = "<group>"; };
 		48096D422311E796007FF518 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +44,12 @@
 		48096D4C2311E796007FF518 /* BitFlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitFlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48096D502311E796007FF518 /* BitFlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitFlipTests.swift; sourceTree = "<group>"; };
 		48096D522311E796007FF518 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48096D612311E83B007FF518 /* GraphController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphController.swift; sourceTree = "<group>"; };
+		48096D622311E83B007FF518 /* GraphController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphController.xib; sourceTree = "<group>"; };
+		48096D652311E845007FF518 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		48096D662311E845007FF518 /* GameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameController.xib; sourceTree = "<group>"; };
+		48096D6A2311E855007FF518 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
+		48096D6B2311E855007FF518 /* HistoryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +91,13 @@
 		48096D372311E796007FF518 /* BitFlip */ = {
 			isa = PBXGroup;
 			children = (
-				48096D382311E796007FF518 /* AppDelegate.swift */,
-				48096D3A2311E796007FF518 /* ViewController.swift */,
-				48096D3C2311E796007FF518 /* Main.storyboard */,
-				48096D422311E796007FF518 /* Assets.xcassets */,
-				48096D442311E796007FF518 /* LaunchScreen.storyboard */,
+				48096D602311E829007FF518 /* Assets */,
+				48096D5F2311E81C007FF518 /* Model */,
+				48096D5E2311E813007FF518 /* History */,
+				48096D5D2311E811007FF518 /* Game */,
+				48096D5C2311E80D007FF518 /* CoreData */,
+				48096D5B2311E807007FF518 /* Graph */,
 				48096D472311E796007FF518 /* Info.plist */,
-				48096D3F2311E796007FF518 /* BitFlip.xcdatamodeld */,
 			);
 			path = BitFlip;
 			sourceTree = "<group>";
@@ -97,6 +109,60 @@
 				48096D522311E796007FF518 /* Info.plist */,
 			);
 			path = BitFlipTests;
+			sourceTree = "<group>";
+		};
+		48096D5B2311E807007FF518 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				48096D612311E83B007FF518 /* GraphController.swift */,
+				48096D622311E83B007FF518 /* GraphController.xib */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		48096D5C2311E80D007FF518 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				48096D3F2311E796007FF518 /* BitFlip.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		48096D5D2311E811007FF518 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				48096D652311E845007FF518 /* GameController.swift */,
+				48096D662311E845007FF518 /* GameController.xib */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		48096D5E2311E813007FF518 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				48096D6A2311E855007FF518 /* HistoryController.swift */,
+				48096D6B2311E855007FF518 /* HistoryController.xib */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		48096D5F2311E81C007FF518 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48096D3A2311E796007FF518 /* MainController.swift */,
+				48096D382311E796007FF518 /* AppDelegate.swift */,
+				48096D3C2311E796007FF518 /* Main.storyboard */,
+				48096D442311E796007FF518 /* LaunchScreen.storyboard */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48096D602311E829007FF518 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				48096D422311E796007FF518 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,8 +246,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48096D6D2311E855007FF518 /* HistoryController.xib in Resources */,
+				48096D682311E845007FF518 /* GameController.xib in Resources */,
 				48096D462311E796007FF518 /* LaunchScreen.storyboard in Resources */,
 				48096D432311E796007FF518 /* Assets.xcassets in Resources */,
+				48096D642311E83B007FF518 /* GraphController.xib in Resources */,
 				48096D3E2311E796007FF518 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				48096D412311E796007FF518 /* BitFlip.xcdatamodeld in Sources */,
-				48096D3B2311E796007FF518 /* ViewController.swift in Sources */,
+				48096D672311E845007FF518 /* GameController.swift in Sources */,
+				48096D3B2311E796007FF518 /* MainController.swift in Sources */,
+				48096D632311E83B007FF518 /* GraphController.swift in Sources */,
+				48096D6C2311E855007FF518 /* HistoryController.swift in Sources */,
 				48096D392311E796007FF518 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
