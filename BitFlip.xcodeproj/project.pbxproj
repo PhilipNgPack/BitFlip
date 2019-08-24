@@ -20,10 +20,10 @@
 		48096D682311E845007FF518 /* GameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D662311E845007FF518 /* GameController.xib */; };
 		48096D6C2311E855007FF518 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D6A2311E855007FF518 /* HistoryController.swift */; };
 		48096D6D2311E855007FF518 /* HistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D6B2311E855007FF518 /* HistoryController.xib */; };
-		48E83A332311F3C700D07DA5 /* Prob+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A2F2311F3C700D07DA5 /* Prob+CoreDataClass.swift */; };
-		48E83A342311F3C700D07DA5 /* Prob+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A302311F3C700D07DA5 /* Prob+CoreDataProperties.swift */; };
-		48E83A352311F3C700D07DA5 /* Flip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A312311F3C700D07DA5 /* Flip+CoreDataClass.swift */; };
-		48E83A362311F3C700D07DA5 /* Flip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A322311F3C700D07DA5 /* Flip+CoreDataProperties.swift */; };
+		48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D632311F69A008E589B /* Flip+CoreDataClass.swift */; };
+		48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */; };
+		48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D652311F69A008E589B /* Prob+CoreDataClass.swift */; };
+		48561D6A2311F69A008E589B /* Prob+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */; };
 		48E83A382311F3E400D07DA5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A372311F3E400D07DA5 /* CoreDataManager.swift */; };
 		DBC871A69ADD6C314FE91BAE /* Pods_BitFlip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */; };
 		ED135AD684E8B0EFE453FB0E /* Pods_BitFlipTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B779EB21B30B96015376688B /* Pods_BitFlipTests.framework */; };
@@ -60,10 +60,10 @@
 		48096D662311E845007FF518 /* GameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameController.xib; sourceTree = "<group>"; };
 		48096D6A2311E855007FF518 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		48096D6B2311E855007FF518 /* HistoryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryController.xib; sourceTree = "<group>"; };
-		48E83A2F2311F3C700D07DA5 /* Prob+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataClass.swift"; sourceTree = "<group>"; };
-		48E83A302311F3C700D07DA5 /* Prob+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		48E83A312311F3C700D07DA5 /* Flip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataClass.swift"; sourceTree = "<group>"; };
-		48E83A322311F3C700D07DA5 /* Flip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		48561D632311F69A008E589B /* Flip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataClass.swift"; sourceTree = "<group>"; };
+		48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		48561D652311F69A008E589B /* Prob+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataClass.swift"; sourceTree = "<group>"; };
+		48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48E83A372311F3E400D07DA5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		66A0124BED005361AB0D1D8C /* Pods-BitFlipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitFlipTests.release.xcconfig"; path = "Target Support Files/Pods-BitFlipTests/Pods-BitFlipTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitFlip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,10 +154,10 @@
 		48096D5C2311E80D007FF518 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				48E83A2F2311F3C700D07DA5 /* Prob+CoreDataClass.swift */,
-				48E83A302311F3C700D07DA5 /* Prob+CoreDataProperties.swift */,
-				48E83A312311F3C700D07DA5 /* Flip+CoreDataClass.swift */,
-				48E83A322311F3C700D07DA5 /* Flip+CoreDataProperties.swift */,
+				48561D632311F69A008E589B /* Flip+CoreDataClass.swift */,
+				48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */,
+				48561D652311F69A008E589B /* Prob+CoreDataClass.swift */,
+				48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */,
 				48E83A372311F3E400D07DA5 /* CoreDataManager.swift */,
 				48096D3F2311E796007FF518 /* BitFlip.xcdatamodeld */,
 			);
@@ -383,15 +383,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48561D6A2311F69A008E589B /* Prob+CoreDataProperties.swift in Sources */,
 				48096D412311E796007FF518 /* BitFlip.xcdatamodeld in Sources */,
 				48096D672311E845007FF518 /* GameController.swift in Sources */,
-				48E83A362311F3C700D07DA5 /* Flip+CoreDataProperties.swift in Sources */,
-				48E83A352311F3C700D07DA5 /* Flip+CoreDataClass.swift in Sources */,
-				48E83A332311F3C700D07DA5 /* Prob+CoreDataClass.swift in Sources */,
+				48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */,
 				48096D3B2311E796007FF518 /* MainController.swift in Sources */,
+				48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */,
 				48096D632311E83B007FF518 /* GraphController.swift in Sources */,
+				48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */,
 				48096D6C2311E855007FF518 /* HistoryController.swift in Sources */,
-				48E83A342311F3C700D07DA5 /* Prob+CoreDataProperties.swift in Sources */,
 				48096D392311E796007FF518 /* AppDelegate.swift in Sources */,
 				48E83A382311F3E400D07DA5 /* CoreDataManager.swift in Sources */,
 			);
