@@ -1,0 +1,6 @@
+framework module Pods_BitFlipTests {
+  umbrella header "Pods-BitFlipTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
