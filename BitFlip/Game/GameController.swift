@@ -8,28 +8,31 @@
 
 import UIKit
 
-//@objc protocol ScrollViewDelegate {
-//    func didTapButton(controller: String)
-//}
-
 class GameController: UIViewController {
 
     // MARK: Variables
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var bitcoinButton: UIButton!
-    
-//    var delegate: ScrollViewDelegate!
+    var bitCoinPhases: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bounceAnim()
+        bounceAnim()
+        loadTextures()
+    }
+    
+    func loadTextures() {
+        for i in 1...8 {
+            self.bitCoinPhases.append(UIImage(named: "bitcoin\(i)")!)
+        }
     }
     
     func bounceAnim() {
         UIView.animate(withDuration: 0.8,
                        delay: 0,
-                       options: [.repeat, .autoreverse, .beginFromCurrentState],
+                       options: [.repeat, .autoreverse, .beginFromCurrentState,
+                                 .allowUserInteraction],
                        animations: {
                         self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(5))
                         self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-5))
@@ -51,6 +54,21 @@ class GameController: UIViewController {
     }
 
     @IBAction func bitcoinButtonTapped(_ sender: Any) {
+        print("Tapped")
+        let animDuration: Double = 0.5
+        self.view.isUserInteractionEnabled = false;
+        bitcoinButton.imageView?.animationImages = bitCoinPhases
+        bitcoinButton.imageView?.animationDuration = animDuration
+        bitcoinButton.imageView?.animationRepeatCount = 1
+        bitcoinButton.imageView!.startAnimating()
+        
+        // disable all user interaction until animation is complete
+        DispatchQueue.main.asyncAfter(deadline: .now() + animDuration) {
+            self.bitcoinButton.imageView!.stopAnimating()
+            self.view.isUserInteractionEnabled = true;
+        }
+        
+            
         
     }
     

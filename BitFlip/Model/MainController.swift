@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 class MainController: UIViewController {
     
     // MARK: Variables
@@ -38,7 +36,7 @@ class MainController: UIViewController {
         self.addChild(gameController)
         self.scrollView.addSubview(gameController.view)
         gameController.didMove(toParent: self)
-//        gameController.delegate = self
+
         
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         self.addChild(historyController)
