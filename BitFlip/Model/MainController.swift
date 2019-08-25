@@ -8,26 +8,33 @@
 
 import UIKit
 
+
+
 class MainController: UIViewController {
     
+    // MARK: Variables
     @IBOutlet weak var scrollView: UIScrollView!
+    var graphController: GraphController!
+    var gameController: GameController!
+    var historyController: HistoryController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.contentOffset.x = self.view.frame.size.width
         
-        let graphController: GraphController = GraphController(nibName: "GraphController", bundle: nil)
+        graphController =  GraphController(nibName: "GraphController", bundle: nil)
         self.addChild(graphController)
         self.scrollView.addSubview(graphController.view)
         graphController.didMove(toParent: self)
         
-        let gameController: GameController = GameController(nibName: "GameController", bundle: nil)
+        gameController = GameController(nibName: "GameController", bundle: nil)
         self.addChild(gameController)
         self.scrollView.addSubview(gameController.view)
         gameController.didMove(toParent: self)
+        gameController.selectionDelegate = self
         
-        let historyController: HistoryController = HistoryController(nibName: "HistoryController", bundle: nil)
+        historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         self.addChild(historyController)
         self.scrollView.addSubview(historyController.view)
         historyController.didMove(toParent: self)
@@ -48,7 +55,22 @@ class MainController: UIViewController {
         self.scrollView.contentSize = CGSize(width: self.view.frame.width * 3,
                                              height: self.view.frame.size.height)
     }
+}
+
+extension MainController: NextScreenDelegate {
     
-    
+    func didTapButton(name: String) {
+        if (name == "graph") {
+            let xOffset = self.view.frame.size.width
+            scrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
+            
+        }
+        else if (name == "history") {
+            let xOffset = 2 * self.view.frame.size.width
+            scrollView.setContentOffset(CGPoint(x: xOffset, y: 0.0), animated: true)
+         
+        }
+        print(name)
+    }
 }
 
