@@ -17,11 +17,23 @@ class GameController: UIViewController {
     // MARK: Variables
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
-    @IBOutlet weak var bitcoin: UIImageView!
+    @IBOutlet weak var bitcoinButton: UIButton!
+    
 //    var delegate: ScrollViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.bounceAnim()
+    }
+    
+    func bounceAnim() {
+        UIView.animate(withDuration: 0.8,
+                       delay: 0,
+                       options: [.repeat, .autoreverse, .beginFromCurrentState],
+                       animations: {
+                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(5))
+                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-5))
+        }, completion: nil)
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
@@ -37,8 +49,10 @@ class GameController: UIViewController {
                                         object: nil,
                                         userInfo: payload)
     }
-    
-    @IBOutlet weak var bitcoinTapped: UIImageView!
+
+    @IBAction func bitcoinButtonTapped(_ sender: Any) {
+        
+    }
     
     
 }
