@@ -17,13 +17,18 @@ class MainController: UIViewController {
     var graphController: GraphController!
     var gameController: GameController!
     var historyController: HistoryController!
+    var viewControllers: [String] = ["graph", "game", "history"]
+    
+    // MARK: Numbered variables
+    var frameWidth:CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Loaded")
+        frameWidth = self.view.frame.size.width
+        scrollView.contentOffset.x = frameWidth
         
-        scrollView.contentOffset.x = self.view.frame.size.width
-        
-        graphController =  GraphController(nibName: "GraphController", bundle: nil)
+        graphController = GraphController(nibName: "GraphController", bundle: nil)
         self.addChild(graphController)
         self.scrollView.addSubview(graphController.view)
         graphController.didMove(toParent: self)
@@ -32,18 +37,16 @@ class MainController: UIViewController {
         self.addChild(gameController)
         self.scrollView.addSubview(gameController.view)
         gameController.didMove(toParent: self)
-        gameController.selectionDelegate = self
+        gameController.delegate = self
         
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         self.addChild(historyController)
         self.scrollView.addSubview(historyController.view)
         historyController.didMove(toParent: self)
         
-        
         var gameFrame: CGRect = gameController.view.frame
         gameFrame.origin.x = self.view.frame.width
         gameController.view.frame = gameFrame
-        
         
         var historyFrame: CGRect = historyController.view.frame
         historyFrame.origin.x = 2 * self.view.frame.width
@@ -52,25 +55,22 @@ class MainController: UIViewController {
         // hide scroll bar
         scrollView?.showsHorizontalScrollIndicator = false
         
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width * 3,
-                                             height: self.view.frame.size.height)
+        self.scrollView.contentSize = CGSize(width: frameWidth * 3,
+                                             height: frameWidth)
+    }
+    
+    func indexFor(controller: String?) -> Int? {
+        return viewControllers.firstIndex(of: controller! )
     }
 }
 
-extension MainController: NextScreenDelegate {
+extension MainController: ScrollViewDelegate {
     
-    func didTapButton(name: String) {
-        if (name == "graph") {
-            let xOffset = self.view.frame.size.width
-            scrollView.setContentOffset(CGPoint(x: 0.0, y: 0.0), animated: true)
-            
-        }
-        else if (name == "history") {
-            let xOffset = 2 * self.view.frame.size.width
-            scrollView.setContentOffset(CGPoint(x: xOffset, y: 0.0), animated: true)
-         
-        }
-        print(name)
+    func didTapButton(controller: String) {
+        guard let index = indexFor(controller: controller) else { return }
+        let offset = CGPoint(x: frameWidth * CGFloat(index), y:0.0)
+        scrollView.setContentOffset(offset, animated: true)
     }
 }
+
 

@@ -8,8 +8,8 @@
 
 import UIKit
 
-@objc protocol NextScreenDelegate {
-    func didTapButton(name: String)
+@objc protocol ScrollViewDelegate {
+    func didTapButton(controller: String)
 }
 
 class GameController: UIViewController {
@@ -17,18 +17,18 @@ class GameController: UIViewController {
     // MARK: Variables
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
-    var selectionDelegate: NextScreenDelegate!
+    var delegate: ScrollViewDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
-        selectionDelegate.didTapButton(name: "graph")
+        delegate.didTapButton(controller: "graph")
     }
     
     @IBAction func historyButtonTapped(_ sender: Any) {
-        selectionDelegate.didTapButton(name: "history")
+        delegate.didTapButton(controller: "history")
     }
     
     
