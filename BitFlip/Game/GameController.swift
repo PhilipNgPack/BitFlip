@@ -8,28 +8,37 @@
 
 import UIKit
 
-@objc protocol ScrollViewDelegate {
-    func didTapButton(controller: String)
-}
+//@objc protocol ScrollViewDelegate {
+//    func didTapButton(controller: String)
+//}
 
 class GameController: UIViewController {
 
     // MARK: Variables
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
-    var delegate: ScrollViewDelegate!
+    @IBOutlet weak var bitcoin: UIImageView!
+//    var delegate: ScrollViewDelegate!
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
-        delegate.didTapButton(controller: "graph")
+        let payload = ["controller" : "graph"]
+        NotificationCenter.default.post(name: .selectVCNotif,
+                                        object: nil,
+                                        userInfo: payload)
     }
     
     @IBAction func historyButtonTapped(_ sender: Any) {
-        delegate.didTapButton(controller: "history")
+        let payload = ["controller" : "history"]
+        NotificationCenter.default.post(name: .selectVCNotif,
+                                        object: nil,
+                                        userInfo: payload)
     }
+    
+    @IBOutlet weak var bitcoinTapped: UIImageView!
     
     
 }

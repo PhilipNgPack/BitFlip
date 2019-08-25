@@ -24,7 +24,8 @@ class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Loaded")
+        self.loadObservers()
+        
         frameWidth = self.view.frame.size.width
         scrollView.contentOffset.x = frameWidth
         
@@ -37,7 +38,7 @@ class MainController: UIViewController {
         self.addChild(gameController)
         self.scrollView.addSubview(gameController.view)
         gameController.didMove(toParent: self)
-        gameController.delegate = self
+//        gameController.delegate = self
         
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         self.addChild(historyController)
@@ -59,18 +60,42 @@ class MainController: UIViewController {
                                              height: frameWidth)
     }
     
+    func loadObservers () {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(selectViewController(notification:)),
+                                       name: .selectVCNotif,
+                                       object: nil)
+    }
+    
+    // finds the index of a ViewController
     func indexFor(controller: String?) -> Int? {
         return viewControllers.firstIndex(of: controller! )
     }
-}
-
-extension MainController: ScrollViewDelegate {
     
-    func didTapButton(controller: String) {
-        guard let index = indexFor(controller: controller) else { return }
-        let offset = CGPoint(x: frameWidth * CGFloat(index), y:0.0)
-        scrollView.setContentOffset(offset, animated: true)
+    @objc func selectViewController(notification: NSNotification) {
+        if let controller = notification.userInfo?["controller"] as? String {            
+            guard let index = indexFor(controller: controller) else { return }
+            let offset = CGPoint(x: frameWidth * CGFloat(index), y:0.0)
+            scrollView.setContentOffset(offset, animated: true)
+        }
     }
 }
+
+//extension MainController: ScrollViewDelegate {
+//
+//    // go to the selected ViewController
+//    func didTapButton(controller: String) {
+//        guard let index = indexFor(controller: controller) else { return }
+//        let offset = CGPoint(x: frameWidth * CGFloat(index), y:0.0)
+//        scrollView.setContentOffset(offset, animated: true)
+//    }
+//}
+
+// Notification center variables
+extension Notification.Name {
+    static let selectVCNotif = Notification.Name("selectViewController")
+}
+
 
 
