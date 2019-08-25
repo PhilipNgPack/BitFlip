@@ -10,33 +10,23 @@ import UIKit
 
 class GameController: UIViewController {
 
-    // MARK: Variables
+    // MARK: Outlet Variables
+    
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var bitcoinButton: UIButton!
     var bitCoinPhases: [UIImage] = []
     
+    // MARK: Dependency injection
+    var flipSystem: FlipSystem?
+    
+    
+    // MARK: Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bounceAnim()
         loadTextures()
-    }
-    
-    func loadTextures() {
-        for i in 1...8 {
-            self.bitCoinPhases.append(UIImage(named: "bitcoin\(i)")!)
-        }
-    }
-    
-    func bounceAnim() {
-        UIView.animate(withDuration: 0.8,
-                       delay: 0,
-                       options: [.repeat, .autoreverse, .beginFromCurrentState,
-                                 .allowUserInteraction],
-                       animations: {
-                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(5))
-                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-5))
-        }, completion: nil)
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
@@ -54,7 +44,33 @@ class GameController: UIViewController {
     }
 
     @IBAction func bitcoinButtonTapped(_ sender: Any) {
-        print("Tapped")
+        flipCoinAnim()
+        flipSystem?.flipCoin()
+    }
+    
+    //MARK: Animations
+    
+    // load the animation textures for coin flipping
+    func loadTextures() {
+        for i in 1...8 {
+            self.bitCoinPhases.append(UIImage(named: "bitcoin\(i)")!)
+        }
+    }
+    
+    // bouncing animations for the coin
+    func bounceAnim() {
+        UIView.animate(withDuration: 0.8,
+                       delay: 0,
+                       options: [.repeat, .autoreverse, .beginFromCurrentState,
+                                 .allowUserInteraction],
+                       animations: {
+                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(5))
+                        self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-5))
+        }, completion: nil)
+    }
+    
+    // flipping animation for the coin
+    func flipCoinAnim() {
         let animDuration: Double = 0.5
         self.view.isUserInteractionEnabled = false;
         bitcoinButton.imageView?.animationImages = bitCoinPhases
@@ -67,10 +83,7 @@ class GameController: UIViewController {
             self.bitcoinButton.imageView!.stopAnimating()
             self.view.isUserInteractionEnabled = true;
         }
-        
-            
-        
     }
-    
-    
 }
+
+

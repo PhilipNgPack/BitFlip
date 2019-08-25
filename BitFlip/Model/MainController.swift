@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MainController: UIViewController {
     
@@ -16,13 +17,20 @@ class MainController: UIViewController {
     var gameController: GameController!
     var historyController: HistoryController!
     var viewControllers: [String] = ["graph", "game", "history"]
+    var container: NSPersistentContainer!
+    var coreDataManager: CoreDataManager?
+    var flipSystem: FlipSystem?
     
     // MARK: Numbered variables
     var frameWidth:CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadObservers()
+        guard container != nil else {
+            fatalError("This view needs a persistent container.")
+        }
+        coreDataManager = CoreDataManager()
+        flipSystem = FlipSystem(coreDataManager: coreDataManager!)
         
         frameWidth = self.view.frame.size.width
         scrollView.contentOffset.x = frameWidth
@@ -33,11 +41,11 @@ class MainController: UIViewController {
         graphController.didMove(toParent: self)
         
         gameController = GameController(nibName: "GameController", bundle: nil)
+        gameController.flipSystem = flipSystem // property injection
         self.addChild(gameController)
         self.scrollView.addSubview(gameController.view)
         gameController.didMove(toParent: self)
 
-        
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         self.addChild(historyController)
         self.scrollView.addSubview(historyController.view)
@@ -56,6 +64,7 @@ class MainController: UIViewController {
         
         self.scrollView.contentSize = CGSize(width: frameWidth * 3,
                                              height: frameWidth)
+        self.loadObservers()
     }
     
     func loadObservers () {
@@ -93,6 +102,7 @@ class MainController: UIViewController {
 // Notification center variables
 extension Notification.Name {
     static let selectVCNotif = Notification.Name("selectViewController")
+    static let flipCoinNotif = Notification.Name("flipCoinNotif")
 }
 
 
