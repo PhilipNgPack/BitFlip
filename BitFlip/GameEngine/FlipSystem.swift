@@ -18,10 +18,9 @@ class FlipSystem {
     }
     
     // flips the coin and sends the data to CoreData
-    func flipCoin(context: NSManagedObjectContext) {
+    func flipCoin() {
         let coinToss = Int.random(in: 0...1)
-        coreDataManager?.save(context: context)
-        print(coinToss)
+        _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date())        
     }
     
     

@@ -29,7 +29,7 @@ class MainController: UIViewController {
         guard container != nil else {
             fatalError("This view needs a persistent container.")
         }
-        coreDataManager = CoreDataManager()
+        coreDataManager = CoreDataManager(container: container)
         flipSystem = FlipSystem(coreDataManager: coreDataManager!)
         
         frameWidth = self.view.frame.size.width

@@ -11,10 +11,16 @@ import CoreData
 
 class CoreDataManager {
     
-    // MARK: - Core Data stack
+    var container: NSPersistentContainer?
+    var context: NSManagedObjectContext
+    
+    init(container: NSPersistentContainer) {
+        self.container = container
+        self.context = container.viewContext
+    }
     
     // fetches all the flips
-    func fetchAllFlips(context: NSManagedObjectContext) -> [Flip]? {
+    func fetchAllFlips() -> [Flip]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Flip")
         
         do {
@@ -27,7 +33,7 @@ class CoreDataManager {
     }
     
     // fetches all the probs
-    func fetchAllProbs(context: NSManagedObjectContext) -> [Prob]? {
+    func fetchAllProbs() -> [Prob]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Prob")
         
         do {
@@ -40,25 +46,19 @@ class CoreDataManager {
     }
     
     // adds a flip to the context manager and saves it
-    func insertFlip(context: NSManagedObjectContext, outcome: Int16, date : Date) -> Flip? {
+    func insertFlip(outcome: Int16, date : Date) -> Flip? {
         let entity = NSEntityDescription.entity(forEntityName: "Flip",
                                                 in: context)!
         let flip = NSManagedObject(entity: entity,
                                    insertInto: context)
         flip.setValue(outcome, forKeyPath: "outcome")
         flip.setValue(date, forKeyPath: "date")
-        
-        do {
-            try context.save()
-            return flip as? Flip
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-            return nil
-        }
+        save()
+        return flip as? Flip
     }
     
     // adds a prob to the context manager and saves it
-    func insertProb(context: NSManagedObjectContext, headsProb: Double, tailsProb: Double, date : Date) -> Prob? {
+    func insertProb(headsProb: Double, tailsProb: Double, date : Date) -> Prob? {
         let entity = NSEntityDescription.entity(forEntityName: "Prob",
                                                 in: context)!
         let prob = NSManagedObject(entity: entity,
@@ -66,18 +66,12 @@ class CoreDataManager {
         prob.setValue(headsProb, forKeyPath: "headsProb")
         prob.setValue(tailsProb, forKeyPath: "tailsProb")
         prob.setValue(date, forKeyPath: "date")
-        
-        do {
-            try context.save()
-            return prob as? Prob
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-            return nil
-        }
+        save()
+        return prob as? Prob
     }
     
     // returns the number of entries in the given entity
-    func getCount(context: NSManagedObjectContext, _ entity: String) -> Int {
+    func getCount(_ entity: String) -> Int {
         switch entity {
         case "Flip":
             do {
@@ -113,7 +107,7 @@ class CoreDataManager {
     }
     
     // MARK: - Core Data Saving support
-    func save(context: NSManagedObjectContext) {
+    func save() {
         if context.hasChanges {
             do {
                 try context.save()
