@@ -20,6 +20,7 @@
 		48096D682311E845007FF518 /* GameController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D662311E845007FF518 /* GameController.xib */; };
 		48096D6C2311E855007FF518 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48096D6A2311E855007FF518 /* HistoryController.swift */; };
 		48096D6D2311E855007FF518 /* HistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D6B2311E855007FF518 /* HistoryController.xib */; };
+		481338A92314D06A000C0EAF /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481338A82314D06A000C0EAF /* BarChart.swift */; };
 		48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D632311F69A008E589B /* Flip+CoreDataClass.swift */; };
 		48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */; };
 		48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D652311F69A008E589B /* Prob+CoreDataClass.swift */; };
@@ -61,6 +62,7 @@
 		48096D662311E845007FF518 /* GameController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameController.xib; sourceTree = "<group>"; };
 		48096D6A2311E855007FF518 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		48096D6B2311E855007FF518 /* HistoryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryController.xib; sourceTree = "<group>"; };
+		481338A82314D06A000C0EAF /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		48561D632311F69A008E589B /* Flip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48561D652311F69A008E589B /* Prob+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				48096D612311E83B007FF518 /* GraphController.swift */,
 				48096D622311E83B007FF518 /* GraphController.xib */,
+				481338A82314D06A000C0EAF /* BarChart.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */,
 				48096D3B2311E796007FF518 /* MainController.swift in Sources */,
 				48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */,
+				481338A92314D06A000C0EAF /* BarChart.swift in Sources */,
 				48096D632311E83B007FF518 /* GraphController.swift in Sources */,
 				48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */,
 				48096D6C2311E855007FF518 /* HistoryController.swift in Sources */,

@@ -20,6 +20,7 @@ class MainController: UIViewController {
     var container: NSPersistentContainer!
     var coreDataManager: CoreDataManager?
     var flipSystem: FlipSystem?
+    var barChart: BarChart?
     
     // MARK: Numbered variables
     var frameWidth:CGFloat!
@@ -31,11 +32,13 @@ class MainController: UIViewController {
         }
         coreDataManager = CoreDataManager(container: container)
         flipSystem = FlipSystem(coreDataManager: coreDataManager!)
+        barChart = BarChart(coreDataManager: coreDataManager!)
         
         frameWidth = self.view.frame.size.width
         scrollView.contentOffset.x = frameWidth
         
         graphController = GraphController(nibName: "GraphController", bundle: nil)
+        graphController.barChart = barChart // property injection
         self.addChild(graphController)
         self.scrollView.addSubview(graphController.view)
         graphController.didMove(toParent: self)
@@ -77,7 +80,7 @@ class MainController: UIViewController {
     
     // finds the index of a ViewController
     func indexFor(controller: String?) -> Int? {
-        return viewControllers.firstIndex(of: controller! )
+        return viewControllers.firstIndex(of: controller!)
     }
     
     @objc func selectViewController(notification: NSNotification) {
@@ -88,16 +91,6 @@ class MainController: UIViewController {
         }
     }
 }
-
-//extension MainController: ScrollViewDelegate {
-//
-//    // go to the selected ViewController
-//    func didTapButton(controller: String) {
-//        guard let index = indexFor(controller: controller) else { return }
-//        let offset = CGPoint(x: frameWidth * CGFloat(index), y:0.0)
-//        scrollView.setContentOffset(offset, animated: true)
-//    }
-//}
 
 // Notification center variables
 extension Notification.Name {

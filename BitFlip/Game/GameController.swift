@@ -22,7 +22,6 @@ class GameController: UIViewController {
     
     
     // MARK: Functions
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         bounceAnim()
