@@ -23,32 +23,50 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZk-FJ-2OY">
-                    <rect key="frame" x="107" y="348" width="200" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="bitcoin1"/>
-                    <connections>
-                        <action selector="bitcoinButtonTapped:" destination="-1" eventType="touchUpInside" id="C6g-V9-xnl"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkd-NR-Gmt">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkd-NR-Gmt">
                     <rect key="frame" x="354" y="44" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="A6t-TU-CKh"/>
+                        <constraint firstAttribute="width" constant="40" id="hxo-k5-F0F"/>
+                    </constraints>
                     <state key="normal" title="Button" image="historyIcon"/>
                     <connections>
                         <action selector="historyButtonTapped:" destination="-1" eventType="touchUpInside" id="THX-p1-bvf"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUY-dC-beb">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUY-dC-beb">
                     <rect key="frame" x="20" y="44" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="9ef-lX-2qF"/>
+                        <constraint firstAttribute="height" constant="40" id="eex-eU-hZP"/>
+                    </constraints>
                     <state key="normal" title="Button" image="lineChartIcon"/>
                     <connections>
                         <action selector="graphButtonTapped:" destination="-1" eventType="touchUpInside" id="fnl-ah-C6W"/>
                     </connections>
                 </button>
+                <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZk-FJ-2OY">
+                    <rect key="frame" x="107" y="348" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BZk-FJ-2OY" secondAttribute="height" multiplier="1:1" id="vtJ-mO-QSR"/>
+                    </constraints>
+                    <state key="normal" image="bitcoin1"/>
+                    <connections>
+                        <action selector="bitcoinButtonTapped:" destination="-1" eventType="touchUpInside" id="C6g-V9-xnl"/>
+                    </connections>
+                </button>
             </subviews>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xkd-NR-Gmt" secondAttribute="trailing" constant="20" id="OCA-f0-r1u"/>
+                <constraint firstItem="ZUY-dC-beb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TUg-Pf-sFh"/>
+                <constraint firstItem="BZk-FJ-2OY" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-214" id="Wak-fo-FpP"/>
+                <constraint firstItem="BZk-FJ-2OY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="bZO-GO-HOn"/>
+                <constraint firstItem="BZk-FJ-2OY" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-5" id="de6-v2-S0C"/>
+                <constraint firstItem="xkd-NR-Gmt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oYE-yU-5tj"/>
+                <constraint firstItem="ZUY-dC-beb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="vFy-5n-7yB"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
         </view>
     </objects>
     <resources>
