@@ -27,9 +27,8 @@ class PageViewController: UIPageViewController {
         print("pageviewcontroller loaded")
         decoratePageControl()
         populateItems()
-        if let firstViewController = items.first {
-            setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        }
+        let firstViewController = items[1]
+        setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         
     }
     
@@ -65,7 +64,7 @@ class PageViewController: UIPageViewController {
 // MARK: - DataSource
 extension PageViewController: UIPageViewControllerDataSource {
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.index(of: viewController) else {
+        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil
         }
         
@@ -83,7 +82,7 @@ extension PageViewController: UIPageViewControllerDataSource {
     }
     
     func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.index(of: viewController) else {
+        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
             return nil
         }
         
@@ -105,7 +104,7 @@ extension PageViewController: UIPageViewControllerDataSource {
     
     func presentationIndex(for _: UIPageViewController) -> Int {
         guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = items.index(of: firstViewController) else {
+            let firstViewControllerIndex = items.firstIndex(of: firstViewController) else {
                 return 0
         }
         
