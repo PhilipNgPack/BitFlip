@@ -13,6 +13,9 @@ class MainController: UIViewController {
     
     // MARK: Variables
     var container: NSPersistentContainer!
+    var graphController: GraphController!
+    var gameController: GameController!
+    var historyController: HistoryController!
     @IBOutlet weak var pageViewContainer: UIView!
     
     
@@ -32,7 +35,9 @@ class MainController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pagination",
             let pageView = segue.destination as? PageViewController {
-            pageView.container = container
+            pageView.graphController = graphController
+            pageView.gameController = gameController
+            pageView.historyController = historyController
         }
     }
 //    func loadObservers () {

@@ -16,11 +16,7 @@ class PageViewController: UIPageViewController {
     var graphController: GraphController!
     var gameController: GameController!
     var historyController: HistoryController!
-    var container: NSPersistentContainer!
-    var coreDataManager: CoreDataManager?
-    var flipSystem: FlipSystem?
-    var barChart: BarChart?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -40,21 +36,6 @@ class PageViewController: UIPageViewController {
     
     // populate da items
     fileprivate func populateItems() {
-        guard container != nil else {
-            fatalError("This view needs a persistent container.")
-        }
-        coreDataManager = CoreDataManager(container: container)
-        flipSystem = FlipSystem(coreDataManager: coreDataManager!)
-        barChart = BarChart(coreDataManager: coreDataManager!)
-        
-        graphController = GraphController(nibName: "GraphController", bundle: nil)
-        graphController.barChart = barChart // property injection
-        
-        gameController = GameController(nibName: "GameController", bundle: nil)
-        gameController.flipSystem = flipSystem // property injection
-        
-        historyController = HistoryController(nibName: "HistoryController", bundle: nil)
-        
         items.append(graphController)
         items.append(gameController)
         items.append(historyController)

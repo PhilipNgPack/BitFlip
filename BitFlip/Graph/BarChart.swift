@@ -15,11 +15,13 @@ class BarChart {
     
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
+        print("loaded bar chart")
     }
     
     func drawChart(_ barChartView: BarChartView) {
         
         let flips = coreDataManager.fetchAllFlips()
+        print(flips)
         let headsCount = flips!.filter({ $0.outcome == 0}).count
         let tailsCount = flips!.filter({ $0.outcome == 1}).count
         
