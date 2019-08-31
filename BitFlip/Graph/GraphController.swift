@@ -11,12 +11,16 @@ import Charts
 
 class GraphController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var barChartView: BarChartView!
 //    var lineChart: LineChart?
     var barChart: BarChart?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        drawChart()
     }
     
     func drawChart() {

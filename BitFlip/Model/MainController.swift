@@ -23,13 +23,6 @@ class MainController: UIViewController {
         super.viewDidLoad()
         print("the maincontroller loaded but I want the other to load too...")
         
-
-//        // hide scroll bar 
-//        scrollView?.showsHorizontalScrollIndicator = false
-//
-//        self.scrollView.contentSize = CGSize(width: frameWidth * 3,
-//                                             height: frameWidth)
-////        self.loadObservers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,21 +33,11 @@ class MainController: UIViewController {
             pageView.historyController = historyController
         }
     }
-//    func loadObservers () {
-//        let notificationCenter = NotificationCenter.default
-//        notificationCenter.addObserver(self,
-//                                       selector: #selector(selectViewController(notification:)),
-//                                       name: .selectVCNotif,
-//                                       object: nil)
-//    }
 }
-
-
-
 
 // Notification center variables
 extension Notification.Name {
-    static let selectVCNotif = Notification.Name("selectViewController")
+    static let goToPageNotif = Notification.Name("goToPageNotif")
     static let flipCoinNotif = Notification.Name("flipCoinNotif")
 }
 

@@ -11,84 +11,76 @@ import Foundation
 import CoreData
 
 class PageViewController: UIPageViewController {
-    fileprivate var items: [UIViewController] = []
+    fileprivate var pages: [UIViewController] = []
     
     var graphController: GraphController!
     var gameController: GameController!
     var historyController: HistoryController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
         print("pageviewcontroller loaded")
-        decoratePageControl()
-        populateItems()
-        let firstViewController = items[1]
+        populatePages()
+        let firstViewController = pages[1]
         setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
-        
+        loadObservers()
     }
     
-    fileprivate func decoratePageControl() {
-        let pc = UIPageControl.appearance(whenContainedInInstancesOf: [PageViewController.self])
-        pc.currentPageIndicatorTintColor = .orange
-        pc.pageIndicatorTintColor = .gray
+    // populate da pages
+    fileprivate func populatePages() {
+        pages.append(graphController)
+        pages.append(gameController)
+        pages.append(historyController)
     }
     
-    // populate da items
-    fileprivate func populateItems() {
-        items.append(graphController)
-        items.append(gameController)
-        items.append(historyController)
+    func loadObservers () {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(goToPage(notification:)),
+                                       name: .goToPageNotif,
+                                       object: nil)
     }
+
 }
 
 // MARK: - DataSource
 extension PageViewController: UIPageViewControllerDataSource {
-    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
-            return nil
-        }
-        
-        let previousIndex = viewControllerIndex - 1
-        
-        guard previousIndex >= 0 else {
-            return items.last
-        }
-        
-        guard items.count > previousIndex else {
-            return nil
-        }
-        
-        return items[previousIndex]
+    
+    // go back a page
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let currentIndex = pages.firstIndex(of: viewController)!
+        let previousIndex = currentIndex - 1
+        return (previousIndex == -1) ? nil : pages[previousIndex]
     }
     
-    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
-            return nil
-        }
+    // go forwards
+    func pageViewController(_ pageViewController: UIPageViewController,
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        let currentIndex = pages.firstIndex(of: viewController)!
+        let nextIndex = currentIndex + 1
         
-        let nextIndex = viewControllerIndex + 1
-        guard items.count != nextIndex else {
-            return items.first
-        }
-        
-        guard items.count > nextIndex else {
-            return nil
-        }
-        
-        return items[nextIndex]
+        // insert code here to clear graph data to save memory
+        return (nextIndex == pages.count) ? nil : pages[nextIndex]
     }
     
-    func presentationCount(for _: UIPageViewController) -> Int {
-        return items.count
-    }
     
-    func presentationIndex(for _: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = items.firstIndex(of: firstViewController) else {
-                return 0
-        }
+    @objc func goToPage(notification: NSNotification) {
+        guard let currentViewController = self.viewControllers?.first else { return }
         
-        return firstViewControllerIndex
+        if let userInfo = notification.userInfo?["page"] as? String {
+            switch userInfo {
+            case "graph":
+                
+                guard let nextViewController = dataSource?.pageViewController(self, viewControllerBefore: currentViewController) else { return }
+                setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
+                
+            default:
+                guard let previousViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) else { return }
+                setViewControllers([previousViewController], direction: .forward, animated: true, completion: nil)
+                
+            }
+        }
     }
 }

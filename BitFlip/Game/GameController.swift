@@ -29,15 +29,15 @@ class GameController: UIViewController {
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
-        let payload = ["controller" : "graph"]
-        NotificationCenter.default.post(name: .selectVCNotif,
+        let payload = ["page" : "graph"]
+        NotificationCenter.default.post(name: .goToPageNotif,
                                         object: nil,
                                         userInfo: payload)
     }
     
     @IBAction func historyButtonTapped(_ sender: Any) {
-        let payload = ["controller" : "history"]
-        NotificationCenter.default.post(name: .selectVCNotif,
+        let payload = ["page" : "history"]
+        NotificationCenter.default.post(name: .goToPageNotif,
                                         object: nil,
                                         userInfo: payload)
     }
