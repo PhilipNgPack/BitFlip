@@ -13,10 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let appDependencies = AppDependencies()
 
+    var coreDataManager: CoreDataManager?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if let rootVC = window?.rootViewController as? MainController {
+            rootVC.graphController = appDependencies.graphController
+            rootVC.gameController = appDependencies.gameController
+            rootVC.historyController = appDependencies.historyController
+        }
+        
         return true
     }
 
@@ -41,8 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        CoreDataManager.shared.save()
+        coreDataManager?.save()
     }
+    
+    // MARK: Core Data Stack
+    
+    
 
 }
 
