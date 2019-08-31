@@ -15,10 +15,12 @@ class GameController: UIViewController {
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var bitcoinButton: UIButton!
+    @IBOutlet weak var wagerButton: UIButton!
     var bitCoinPhases: [UIImage] = []
     
     // MARK: Dependency injection
     var flipSystem: FlipSystem?
+    var wagerController: WagerController!
     
     // MARK: Functions
     override func viewDidLoad() {
@@ -49,6 +51,12 @@ class GameController: UIViewController {
                                         userInfo: payload)
     }
 
+    @IBAction func wagerButtonTapped(_ sender: Any) {
+        wagerController.modalPresentationStyle = .overCurrentContext
+        wagerController.modalTransitionStyle = .crossDissolve
+        present(wagerController, animated: true, completion: nil)
+    }
+    
     @IBAction func bitcoinButtonTapped(_ sender: Any) {
         flipCoinAnim()
         flipSystem?.flipCoin()

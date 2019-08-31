@@ -16,6 +16,7 @@ struct AppDependencies {
     var graphController: GraphController
     var gameController: GameController
     var historyController: HistoryController
+    var wagerController: WagerController
     
     var barChart: BarChart
     var flipSystem: FlipSystem
@@ -25,6 +26,7 @@ struct AppDependencies {
         pageViewController = PageViewController()
         graphController = GraphController(nibName: "GraphController", bundle: nil)
         gameController = GameController(nibName: "GameController", bundle: nil)
+        wagerController = WagerController(nibName: "WagerController", bundle: nil)
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         
         // other classes
@@ -34,6 +36,7 @@ struct AppDependencies {
         // let's do some injection
         graphController.barChart = barChart
         gameController.flipSystem = flipSystem
+        gameController.wagerController = wagerController
         
         pageViewController.graphController = graphController
         pageViewController.gameController = gameController

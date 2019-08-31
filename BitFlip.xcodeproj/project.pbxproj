@@ -29,6 +29,8 @@
 		48561D6A2311F69A008E589B /* Prob+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */; };
 		48561D6D2311FA05008E589B /* FlipSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D6C2311FA05008E589B /* FlipSystem.swift */; };
 		48E83A382311F3E400D07DA5 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E83A372311F3E400D07DA5 /* CoreDataManager.swift */; };
+		4AA688B7231A169700886EDB /* WagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA688B5231A169700886EDB /* WagerController.swift */; };
+		4AA688B8231A169700886EDB /* WagerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA688B6231A169700886EDB /* WagerController.xib */; };
 		DBC871A69ADD6C314FE91BAE /* Pods_BitFlip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */; };
 		ED135AD684E8B0EFE453FB0E /* Pods_BitFlipTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B779EB21B30B96015376688B /* Pods_BitFlipTests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +75,8 @@
 		48561D662311F69A008E589B /* Prob+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prob+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48561D6C2311FA05008E589B /* FlipSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipSystem.swift; sourceTree = "<group>"; };
 		48E83A372311F3E400D07DA5 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4AA688B5231A169700886EDB /* WagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerController.swift; sourceTree = "<group>"; };
+		4AA688B6231A169700886EDB /* WagerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WagerController.xib; sourceTree = "<group>"; };
 		66A0124BED005361AB0D1D8C /* Pods-BitFlipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitFlipTests.release.xcconfig"; path = "Target Support Files/Pods-BitFlipTests/Pods-BitFlipTests.release.xcconfig"; sourceTree = "<group>"; };
 		B3824511F81A8F178F28E1E1 /* Pods_BitFlip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitFlip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B779EB21B30B96015376688B /* Pods_BitFlipTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitFlipTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +138,7 @@
 				48096D602311E829007FF518 /* Assets */,
 				48096D5F2311E81C007FF518 /* Model */,
 				48096D5D2311E811007FF518 /* Game */,
+				4AA688B9231A194700886EDB /* Wager */,
 				48096D5B2311E807007FF518 /* Graph */,
 				48096D5E2311E813007FF518 /* History */,
 				48096D5C2311E80D007FF518 /* CoreData */,
@@ -219,6 +224,15 @@
 				48561D6C2311FA05008E589B /* FlipSystem.swift */,
 			);
 			path = GameEngine;
+			sourceTree = "<group>";
+		};
+		4AA688B9231A194700886EDB /* Wager */ = {
+			isa = PBXGroup;
+			children = (
+				4AA688B5231A169700886EDB /* WagerController.swift */,
+				4AA688B6231A169700886EDB /* WagerController.xib */,
+			);
+			path = Wager;
 			sourceTree = "<group>";
 		};
 		8CA6F4D9531F767532F64C61 /* Pods */ = {
@@ -317,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48096D6D2311E855007FF518 /* HistoryController.xib in Resources */,
+				4AA688B8231A169700886EDB /* WagerController.xib in Resources */,
 				48096D682311E845007FF518 /* GameController.xib in Resources */,
 				48096D462311E796007FF518 /* LaunchScreen.storyboard in Resources */,
 				48096D432311E796007FF518 /* Assets.xcassets in Resources */,
@@ -413,6 +428,7 @@
 				48096D3B2311E796007FF518 /* MainController.swift in Sources */,
 				48561D692311F69A008E589B /* Prob+CoreDataClass.swift in Sources */,
 				481338A92314D06A000C0EAF /* BarChart.swift in Sources */,
+				4AA688B7231A169700886EDB /* WagerController.swift in Sources */,
 				48096D632311E83B007FF518 /* GraphController.swift in Sources */,
 				48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */,
 				48096D6C2311E855007FF518 /* HistoryController.swift in Sources */,
