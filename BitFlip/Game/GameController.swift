@@ -20,22 +20,18 @@ class GameController: UIViewController {
     // MARK: Dependency injection
     var flipSystem: FlipSystem?
     
-    
     // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadTextures()
-        print("game controller was loaded")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         bounceAnim()
-        print("game controller will appear")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("game controller will dissapear")
         self.view.layer.removeAllAnimations()
     }
     
