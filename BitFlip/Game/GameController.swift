@@ -24,8 +24,19 @@ class GameController: UIViewController {
     // MARK: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        bounceAnim()
+        
         loadTextures()
+        print("game controller was loaded")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bounceAnim()
+        print("game controller will appear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("game controller will dissapear")
+        self.view.layer.removeAllAnimations()
     }
     
     @IBAction func graphButtonTapped(_ sender: Any) {
@@ -60,7 +71,7 @@ class GameController: UIViewController {
     func bounceAnim() {
         UIView.animate(withDuration: 0.8,
                        delay: 0,
-                       options: [.repeat, .autoreverse, .beginFromCurrentState,
+                       options: [.repeat, .autoreverse,
                                  .allowUserInteraction],
                        animations: {
                         self.bitcoinButton.transform = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(5))
