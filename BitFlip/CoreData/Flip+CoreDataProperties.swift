@@ -1,9 +1,8 @@
 //
 //  Flip+CoreDataProperties.swift
-//  BitFlip
+//  
 //
-//  Created by Sean Ng Pack on 8/24/19.
-//  Copyright © 2019 Lengjai. All rights reserved.
+//  Created by Philip Ng Pack on 8/31/19.
 //
 //
 
@@ -19,5 +18,8 @@ extension Flip {
 
     @NSManaged public var date: NSDate?
     @NSManaged public var outcome: Int16
+    @NSManaged public var coins: Int32
+    @NSManaged public var tailsProb: Double
+    @NSManaged public var headsProb: Double
 
 }

@@ -32,42 +32,20 @@ class CoreDataManager {
         }
     }
     
-    // fetches all the probs
-    func fetchAllProbs() -> [Prob]? {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Prob")
-        
-        do {
-            let prob = try context.fetch(fetchRequest)
-            return prob as? [Prob]
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return nil
-        }
-    }
-    
     // adds a flip to the context manager and saves it
-    func insertFlip(outcome: Int16, date : Date) -> Flip? {
+    func insertFlip(outcome: Int16, date : Date, coins : Int32, tailsProb: Double, headsProb: Double) -> Flip? {
         let entity = NSEntityDescription.entity(forEntityName: "Flip",
                                                 in: context)!
         let flip = NSManagedObject(entity: entity,
                                    insertInto: context)
         flip.setValue(outcome, forKeyPath: "outcome")
         flip.setValue(date, forKeyPath: "date")
+        flip.setValue(coins, forKey: "coins")
+        flip.setValue(tailsProb, forKeyPath: "tailsProb")
+        flip.setValue(headsProb, forKeyPath: "headsProb")
+        
         save()
         return flip as? Flip
-    }
-    
-    // adds a prob to the context manager and saves it
-    func insertProb(headsProb: Double, tailsProb: Double, date : Date) -> Prob? {
-        let entity = NSEntityDescription.entity(forEntityName: "Prob",
-                                                in: context)!
-        let prob = NSManagedObject(entity: entity,
-                                   insertInto: context)
-        prob.setValue(headsProb, forKeyPath: "headsProb")
-        prob.setValue(tailsProb, forKeyPath: "tailsProb")
-        prob.setValue(date, forKeyPath: "date")
-        save()
-        return prob as? Prob
     }
     
     // returns the number of entries in the given entity
@@ -76,14 +54,6 @@ class CoreDataManager {
         case "Flip":
             do {
                 let count = try context.count(for: NSFetchRequest(entityName: "Flip"))
-                return count
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-                return 0
-            }
-        case "Prob":
-            do {
-                let count = try context.count(for: NSFetchRequest(entityName: "Prob"))
                 return count
             } catch let error as NSError {
                 print("Error: \(error.localizedDescription)")
@@ -99,9 +69,9 @@ class CoreDataManager {
                 print("Error: \(error.localizedDescription)")
                 return 0
             }
-            
+
         default:
-            print("Enter Flip or Prob to fetch the count")
+            print("Enter Flip to fetch the count")
             return 0
         }
     }
