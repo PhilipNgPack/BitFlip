@@ -18,8 +18,8 @@ class CoreDataManager {
         self.container = container
         self.context = container.viewContext
     }
-    
-    // fetches all the flips
+
+    // fetches all the Flip objects
     func fetchAllFlips() -> [Flip]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Flip")
         
@@ -32,8 +32,76 @@ class CoreDataManager {
         }
     }
     
+    // fetches all the outcomes for the inputted duration
+    func fetchOutcomes(range: Int) -> [String: Int] {
+        let end = Date()
+        let start = Calendar.current.date(byAdding: DateComponents(day: -range), to: end)!
+        
+        let headsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
+        headsRequest.predicate = NSPredicate(format: "date > %@ AND date <= %@ AND outcome == %@",
+                                        argumentArray: [start, end, 0])
+        headsRequest.resultType = .countResultType
+        
+        let tailsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
+        tailsRequest.predicate = NSPredicate(format: "date > %@ AND date <= %@ AND outcome == %@",
+                                             argumentArray: [start, end, 1])
+        tailsRequest.resultType = .countResultType
+        
+        let heads = try! context.fetch(headsRequest)[0] as! Int
+        let tails = try! context.fetch(tailsRequest)[0] as! Int
+        
+        return ["heads": heads, "tails": tails]
+    }
+    
+    func fetchProbs(period: String) {
+        
+//            let end = Date()
+//            let start = Calendar.current.date(byAdding: DateComponents(day: -2), to: end)!
+//
+//            let keypathExp1 = NSExpression(forKeyPath: "outcome")
+//            let expression = NSExpression(forFunction: "sum:", arguments: [keypathExp1])
+//            let sumDesc = NSExpressionDescription()
+//
+//            sumDesc.expression = expression
+//            sumDesc.name = "sum" // modifies the dictionary key
+//            sumDesc.expressionResultType = .integer64AttributeType
+//
+//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
+//
+//            request.predicate = NSPredicate(format: "date > %@ AND date <= %@",
+//                                            argumentArray: [start, end])
+//
+//            request.returnsObjectsAsFaults = false
+//            request.propertiesToFetch = [sumDesc]
+//            request.resultType = .dictionaryResultType
+//
+//            let results = try! context.fetch(request) as! [NSDictionary]
+//
+//            for value in results {
+//                print(value)
+//            }
+//            print(getCount("Flip"))
+//
+    }
+    
+    // fetches all the flips for the last 24 hours
+    
     // adds a flip to the context manager and saves it
-    func insertFlip(outcome: Int16, date : Date, coins : Int32, tailsProb: Double, headsProb: Double) -> Flip? {
+    func insertFlip(outcome: Int16, date : Date, coins : Int32) -> Flip? {
+        let allOutcomes = fetchOutcomes(range: 1000)
+        var heads = allOutcomes["heads"]!
+        var tails = allOutcomes["tails"]!
+        let total = heads + tails
+        
+        if outcome == 0 {
+            heads += 1
+        }
+        else {
+            tails += 1
+        }
+        let headsProb = heads/total
+        let tailsProb = tails/total
+        
         let entity = NSEntityDescription.entity(forEntityName: "Flip",
                                                 in: context)!
         let flip = NSManagedObject(entity: entity,
