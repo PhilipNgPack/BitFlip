@@ -52,8 +52,8 @@ class GameController: UIViewController {
     }
 
     @IBAction func wagerButtonTapped(_ sender: Any) {
-        wagerController.modalPresentationStyle = .overCurrentContext
-        wagerController.modalTransitionStyle = .crossDissolve
+        wagerController.modalPresentationStyle = .custom
+//        wagerController.transitioningDelegate = self
         present(wagerController, animated: true, completion: nil)
     }
     
@@ -100,4 +100,10 @@ class GameController: UIViewController {
     }
 }
 
-
+//extension GameController: UIViewControllerTransitioningDelegate {
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?
+//
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
+//}
+//
+//

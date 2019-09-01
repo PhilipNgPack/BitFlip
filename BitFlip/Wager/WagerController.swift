@@ -11,8 +11,10 @@ import UIKit
 class WagerController: UIViewController {
 
     //MARK: Variables
-    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var amountButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -21,17 +23,23 @@ class WagerController: UIViewController {
         self.definesPresentationContext = true
     }
 
-    //MARK: Actions
-    @IBAction func acceptButtonTapped(_ sender: Any) {
+    
+    @IBAction func amountButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         // add a function to accept the new wager
     }
-   
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         // default to not changing the wager amount
     }
     
+    @IBAction func minusButtonTapped(_ sender: Any) {
+        print("I am the minus button")
+    }
     
-
+    @IBAction func plusButtonTapped(_ sender: Any) {
+        print("I am the plus button")
+    }
+    
 }
