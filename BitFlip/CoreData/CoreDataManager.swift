@@ -139,34 +139,6 @@ class CoreDataManager {
         return flip as? Flip
     }
     
-//    // returns the number of entries in the given entity
-//    func getCount(_ entity: String) -> Int {
-//        switch entity {
-//        case "Flip":
-//            do {
-//                let count = try context.count(for: NSFetchRequest(entityName: "Flip"))
-//                return count
-//            } catch let error as NSError {
-//                print("Error: \(error.localizedDescription)")
-//                return 0
-//            }
-//        case "headsCount":
-//            do {
-//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
-//                fetchRequest.predicate = NSPredicate(format: "outcome == %@", 0)
-//                let count = try context.count(for: fetchRequest)
-//                return count
-//            } catch let error as NSError {
-//                print("Error: \(error.localizedDescription)")
-//                return 0
-//            }
-//
-//        default:
-//            print("Enter Flip to fetch the count")
-//            return 0
-//        }
-//    }
-    
     // MARK: - Core Data Saving support
     func save() {
         if context.hasChanges {
