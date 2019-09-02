@@ -11,44 +11,45 @@ import Charts
 
 class BarChart {
     
+    //MARK: - Dependency injection variable
     var coreDataManager: CoreDataManager
     
+    //MARK: - Initialization
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
     }
     
     func drawChart(_ barChartView: BarChartView) {
         
-        
         // MARK: xAxis
-        let xAxis                           = barChartView.xAxis
-        xAxis.labelPosition                 = XAxis.LabelPosition.bottom
-        xAxis.granularity                   = 1.0
-        xAxis.drawGridLinesEnabled          = false
-        let labels                          = ["Heads ", "Tails"]
-        xAxis.labelCount                    = labels.count
-        xAxis.valueFormatter                = IndexAxisValueFormatter(values:labels)
+        let xAxis = barChartView.xAxis
+        xAxis.labelPosition = XAxis.LabelPosition.bottom
+        xAxis.granularity = 1.0
+        xAxis.drawGridLinesEnabled = false
+        let labels = ["Heads ", "Tails"]
+        xAxis.labelCount = labels.count
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:labels)
         
         
         // MARK: leftAxis
-        let leftAxis                        = barChartView.leftAxis
-        leftAxis.drawGridLinesEnabled       = false
-        leftAxis.axisMinimum                = 0.0
+        let leftAxis = barChartView.leftAxis
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.axisMinimum = 0.0
         
         
         // MARK: rightAxis
-        let rightAxis                       = barChartView.rightAxis
-        rightAxis.enabled                   = false
-        rightAxis.axisMinimum               = 0.0
+        let rightAxis = barChartView.rightAxis
+        rightAxis.enabled = false
+        rightAxis.axisMinimum = 0.0
         
         
         // MARK: legend
-        let legend                          = barChartView.legend
-        legend.wordWrapEnabled              = true
-        legend.horizontalAlignment          = .center
-        legend.verticalAlignment            = .bottom
-        legend.orientation                  = .horizontal
-        legend.drawInside                   = false
+        let legend = barChartView.legend
+        legend.wordWrapEnabled = true
+        legend.horizontalAlignment = .center
+        legend.verticalAlignment = .bottom
+        legend.orientation = .horizontal
+        legend.drawInside = false
         
         
         // MARK: description

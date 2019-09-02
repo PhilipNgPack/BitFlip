@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="barChartView" destination="cd7-kL-QiB" id="ZkF-lL-PgA"/>
                 <outlet property="leftButton" destination="d9v-Ye-k9M" id="6Gx-OV-MAm"/>
+                <outlet property="lineChartView" destination="Ff9-7L-X3E" id="o80-Yr-uW2"/>
                 <outlet property="rightButton" destination="rFV-fa-7t6" id="1AU-p5-8hB"/>
                 <outlet property="titleLabel" destination="hrE-fB-VAZ" id="5Zr-DM-9EE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,6 +27,11 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-kL-QiB" customClass="BarChartView" customModule="Charts">
                     <rect key="frame" x="20" y="285" width="374" height="326"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ff9-7L-X3E" customClass="LineChartView" customModule="Charts">
+                    <rect key="frame" x="20" y="285" width="374" height="326"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9v-Ye-k9M">

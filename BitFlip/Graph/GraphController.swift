@@ -15,7 +15,8 @@ class GraphController: UIViewController {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var barChartView: BarChartView!
-//    var lineChart: LineChart?
+    @IBOutlet weak var lineChartView: LineChartView!
+    var lineChart: LineChart?
     var barChart: BarChart?
     
     override func viewDidLoad() {
@@ -23,9 +24,12 @@ class GraphController: UIViewController {
         drawChart()
     }
     
+    
     func drawChart() {
         barChart?.drawChart(barChartView)
     }
+    
+    
     @IBAction func rightButtonTapped(_ sender: Any) {
         barChart?.clear(barChartView)
     }

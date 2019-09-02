@@ -23,6 +23,7 @@
 		480A91BD2318AABA0096D3A0 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A91BC2318AABA0096D3A0 /* AppDependencies.swift */; };
 		481338A92314D06A000C0EAF /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481338A82314D06A000C0EAF /* BarChart.swift */; };
 		481338AB231625E3000C0EAF /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481338AA231625E3000C0EAF /* PageViewController.swift */; };
+		48145A88231D99F00029660C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48145A87231D99F00029660C /* LineChart.swift */; };
 		48561D672311F69A008E589B /* Flip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D632311F69A008E589B /* Flip+CoreDataClass.swift */; };
 		48561D682311F69A008E589B /* Flip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */; };
 		48561D6D2311FA05008E589B /* FlipSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48561D6C2311FA05008E589B /* FlipSystem.swift */; };
@@ -69,6 +70,7 @@
 		480A91BC2318AABA0096D3A0 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		481338A82314D06A000C0EAF /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		481338AA231625E3000C0EAF /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		48145A87231D99F00029660C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		48561D632311F69A008E589B /* Flip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataClass.swift"; sourceTree = "<group>"; };
 		48561D642311F69A008E589B /* Flip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Flip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		48561D6C2311FA05008E589B /* FlipSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipSystem.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				48096D612311E83B007FF518 /* GraphController.swift */,
 				48096D622311E83B007FF518 /* GraphController.xib */,
 				481338A82314D06A000C0EAF /* BarChart.swift */,
+				48145A87231D99F00029660C /* LineChart.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			files = (
 				481338AB231625E3000C0EAF /* PageViewController.swift in Sources */,
 				4AE74B41231AEEAD00F4F5ED /* SlideUpAnimationController.swift in Sources */,
+				48145A88231D99F00029660C /* LineChart.swift in Sources */,
 				48096D412311E796007FF518 /* BitFlip.xcdatamodeld in Sources */,
 				480A91BD2318AABA0096D3A0 /* AppDependencies.swift in Sources */,
 				48096D672311E845007FF518 /* GameController.swift in Sources */,

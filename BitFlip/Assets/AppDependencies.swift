@@ -11,16 +11,23 @@ import CoreData
 
 struct AppDependencies {
     
+    //MARK: - Controller declarations
     var coreDataManager: CoreDataManager
-    var pageViewController: PageViewController
-    var graphController: GraphController
+    var pageViewController:PageViewController
+    var graphController:GraphController
     var gameController: GameController
     var historyController: HistoryController
     var wagerController: WagerController
     
+    //MARK: - Chart declarations
     var barChart: BarChart
+    var lineChart: LineChart
+    
+    //MARK: - Engine declarations
     var flipSystem: FlipSystem
     
+    
+    //MARK: - Variable assignments
     init() {
         coreDataManager = CoreDataManager(container: persistentContainer)
         pageViewController = PageViewController()
@@ -31,6 +38,7 @@ struct AppDependencies {
         
         // other classes
         barChart = BarChart(coreDataManager: coreDataManager)
+        lineChart = lineChart(coreDataManager: coreDataManager)
         flipSystem = FlipSystem(coreDataManager: coreDataManager)
         
         // let's do some injection
@@ -43,6 +51,7 @@ struct AppDependencies {
         pageViewController.historyController = historyController
     }
 
+    //MARK: - Persistence declaration
      var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
