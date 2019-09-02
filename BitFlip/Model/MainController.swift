@@ -21,7 +21,6 @@ class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("the maincontroller loaded but I want the other to load too...")
         
     }
     
