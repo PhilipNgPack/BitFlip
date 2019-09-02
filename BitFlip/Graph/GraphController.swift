@@ -26,5 +26,8 @@ class GraphController: UIViewController {
     func drawChart() {
         barChart?.drawChart(barChartView)
     }
-
+    @IBAction func rightButtonTapped(_ sender: Any) {
+        barChart?.clear(barChartView)
+    }
+    
 }
