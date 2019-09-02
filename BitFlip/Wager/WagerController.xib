@@ -33,13 +33,13 @@
                                 <constraint firstAttribute="width" constant="50" id="1bp-gM-t37"/>
                                 <constraint firstAttribute="height" constant="50" id="K1a-xw-yZ6"/>
                             </constraints>
-                            <state key="normal" image="circleIcon"/>
+                            <state key="normal" image="wagerCheckIcon"/>
                             <connections>
                                 <action selector="amountButtonTapped:" destination="-1" eventType="touchUpInside" id="H5l-RO-23y"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSb-XY-SJh" userLabel="PlusButton">
-                            <rect key="frame" x="274" y="77" width="30" height="30"/>
+                            <rect key="frame" x="277" y="77" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="0Tg-ry-h3p"/>
                                 <constraint firstAttribute="width" constant="30" id="3J6-cF-iGu"/>
@@ -50,18 +50,18 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bU-VV-m8n" userLabel="MinusButton">
-                            <rect key="frame" x="115" y="84.5" width="30" height="15"/>
+                            <rect key="frame" x="107" y="77" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="4Qa-05-9PE"/>
-                                <constraint firstAttribute="height" constant="15" id="7rj-iy-eMt"/>
+                                <constraint firstAttribute="height" constant="30" id="7rj-iy-eMt"/>
                             </constraints>
                             <state key="normal" image="minusIcon"/>
                             <connections>
                                 <action selector="minusButtonTapped:" destination="-1" eventType="touchUpInside" id="AxB-HP-Mqp"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-ma-YAQ" userLabel="AmountLabel">
-                            <rect key="frame" x="202.5" y="83" width="9.5" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8Y-ma-YAQ" userLabel="AmountLabel">
+                            <rect key="frame" x="172.5" y="85" width="34.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -69,14 +69,14 @@
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="jBu-Fj-xp3" firstAttribute="leading" secondItem="9bU-VV-m8n" secondAttribute="trailing" constant="37" id="4hU-CA-bu6"/>
-                        <constraint firstItem="c8Y-ma-YAQ" firstAttribute="centerX" secondItem="dQH-W7-Q5D" secondAttribute="centerX" id="4qQ-sh-zBP"/>
-                        <constraint firstItem="c8Y-ma-YAQ" firstAttribute="centerY" secondItem="dQH-W7-Q5D" secondAttribute="centerY" id="5Zz-SZ-6mF"/>
+                        <constraint firstItem="jBu-Fj-xp3" firstAttribute="leading" secondItem="9bU-VV-m8n" secondAttribute="trailing" constant="45" id="4hU-CA-bu6"/>
+                        <constraint firstItem="c8Y-ma-YAQ" firstAttribute="centerX" secondItem="dQH-W7-Q5D" secondAttribute="centerX" constant="-17.5" id="4qQ-sh-zBP"/>
+                        <constraint firstItem="c8Y-ma-YAQ" firstAttribute="centerY" secondItem="dQH-W7-Q5D" secondAttribute="centerY" constant="2" id="5Zz-SZ-6mF"/>
                         <constraint firstItem="jBu-Fj-xp3" firstAttribute="centerY" secondItem="dQH-W7-Q5D" secondAttribute="centerY" id="LKW-dm-cf5"/>
                         <constraint firstItem="WSb-XY-SJh" firstAttribute="centerY" secondItem="dQH-W7-Q5D" secondAttribute="centerY" id="MOd-Rk-0Ti"/>
                         <constraint firstAttribute="width" constant="414" id="VYd-jT-L2h"/>
                         <constraint firstItem="jBu-Fj-xp3" firstAttribute="centerX" secondItem="dQH-W7-Q5D" secondAttribute="centerX" id="cuI-RI-yHh"/>
-                        <constraint firstItem="WSb-XY-SJh" firstAttribute="leading" secondItem="jBu-Fj-xp3" secondAttribute="trailing" constant="42" id="iLg-G6-MS4"/>
+                        <constraint firstItem="WSb-XY-SJh" firstAttribute="leading" secondItem="jBu-Fj-xp3" secondAttribute="trailing" constant="45" id="iLg-G6-MS4"/>
                         <constraint firstItem="9bU-VV-m8n" firstAttribute="centerY" secondItem="dQH-W7-Q5D" secondAttribute="centerY" id="uEf-T7-GxX"/>
                         <constraint firstAttribute="height" constant="184" id="x4s-K5-a22"/>
                     </constraints>
@@ -104,8 +104,8 @@
         </view>
     </objects>
     <resources>
-        <image name="circleIcon" width="166.66667175292969" height="166.66667175292969"/>
-        <image name="minusIcon" width="682.66668701171875" height="227.66667175292969"/>
-        <image name="plusIcon" width="682.66668701171875" height="682.66668701171875"/>
+        <image name="minusIcon" width="389" height="389"/>
+        <image name="plusIcon" width="389" height="389"/>
+        <image name="wagerCheckIcon" width="389" height="389"/>
     </resources>
 </document>
