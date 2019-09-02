@@ -21,7 +21,7 @@ class FlipSystem {
     func flipCoin() {
         let coinToss = Int.random(in: 0...1)
         _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date(), coins: 0)
-        
+
     }
     
     

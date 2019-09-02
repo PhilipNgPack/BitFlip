@@ -53,45 +53,65 @@ class CoreDataManager {
         return ["heads": heads, "tails": tails]
     }
     
-    func fetchProbs(period: String) {
+    // finds the probabilities for the given duration and returns an array of dictionaries
+    // containing the dates and probabilities
+    func fetchProbs(range: Int) -> [NSDictionary] {
         
-//            let end = Date()
-//            let start = Calendar.current.date(byAdding: DateComponents(day: -2), to: end)!
-//
-//            let keypathExp1 = NSExpression(forKeyPath: "outcome")
-//            let expression = NSExpression(forFunction: "sum:", arguments: [keypathExp1])
-//            let sumDesc = NSExpressionDescription()
-//
-//            sumDesc.expression = expression
-//            sumDesc.name = "sum" // modifies the dictionary key
-//            sumDesc.expressionResultType = .integer64AttributeType
-//
-//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
-//
-//            request.predicate = NSPredicate(format: "date > %@ AND date <= %@",
-//                                            argumentArray: [start, end])
-//
-//            request.returnsObjectsAsFaults = false
-//            request.propertiesToFetch = [sumDesc]
-//            request.resultType = .dictionaryResultType
-//
-//            let results = try! context.fetch(request) as! [NSDictionary]
-//
-//            for value in results {
-//                print(value)
-//            }
-//            print(getCount("Flip"))
-//
+        let fr = NSFetchRequest<NSDictionary>(entityName: "Flip")
+     
+        let end = Date()
+        let start = Calendar.current.date(byAdding: DateComponents(day: -range), to: end)!
+        fr.predicate = NSPredicate(format: "date > %@ AND date <= %@",
+                                                    argumentArray: [start, end])
+        
+        fr.propertiesToGroupBy = ["date"]
+        fr.resultType = .dictionaryResultType
+        let hed = NSExpressionDescription()
+        hed.expression = NSExpression(forFunction: "abs:",
+                                      arguments: [NSExpression(forKeyPath: "headsProb")])
+        hed.name = "headsProb"
+        hed.expressionResultType = .doubleAttributeType
+        
+        let ted = NSExpressionDescription()
+        ted.expression = NSExpression(forFunction: "abs:",
+                                      arguments: [NSExpression(forKeyPath: "tailsProb")])
+        ted.name = "tailsProb"
+        ted.expressionResultType = .doubleAttributeType
+        
+        // generate the dictionary
+        fr.propertiesToFetch = ["date", hed, ted]
+        
+        // fetch it!
+        let probs = try! context.fetch(fr)
+        print(probs.count)
+        
+        // do a for loop now with fetch offset!!!
+        return filterPoints(set: probs, range: range)
     }
     
-    // fetches all the flips for the last 24 hours
+    // applies normalization function to reduce the number of points in a set
+    func filterPoints(set: [NSDictionary], range: Int) -> [NSDictionary] {
+        var newDict:[NSDictionary] = []
+        let points:Float = Float(set.count)
+        let const:Float = 5.0
+        let offset:Int = Int(ceil(points/(Float(range) * const)))
+//        print("offset is \(offset)")
+        
+        newDict.append(set[set.count]) //handpicked last element(most recent flip)
+        for (index, item) in set.reversed().enumerated() {
+            if index % offset == 0 {
+                newDict.append(item)
+            }
+        }
+        newDict.append(set[0]) //handpicked first element
+        return newDict
+    }
     
     // adds a flip to the context manager and saves it
     func insertFlip(outcome: Int16, date : Date, coins : Int32) -> Flip? {
-        let allOutcomes = fetchOutcomes(range: 1000)
-        var heads = allOutcomes["heads"]!
-        var tails = allOutcomes["tails"]!
-        let total = heads + tails
+        let allOutcomes = fetchOutcomes(range: 10000)
+        var heads:Double = Double(allOutcomes["heads"]!)
+        var tails:Double = Double(allOutcomes["tails"]!)
         
         if outcome == 0 {
             heads += 1
@@ -99,8 +119,11 @@ class CoreDataManager {
         else {
             tails += 1
         }
-        let headsProb = heads/total
-        let tailsProb = tails/total
+        
+        let total:Double = heads + tails
+        
+        let headsProb:Double = Double(heads/total)
+        let tailsProb:Double = Double(tails/total)
         
         let entity = NSEntityDescription.entity(forEntityName: "Flip",
                                                 in: context)!
@@ -116,33 +139,33 @@ class CoreDataManager {
         return flip as? Flip
     }
     
-    // returns the number of entries in the given entity
-    func getCount(_ entity: String) -> Int {
-        switch entity {
-        case "Flip":
-            do {
-                let count = try context.count(for: NSFetchRequest(entityName: "Flip"))
-                return count
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-                return 0
-            }
-        case "headsCount":
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
-                fetchRequest.predicate = NSPredicate(format: "outcome == %@", 0)
-                let count = try context.count(for: fetchRequest)
-                return count
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-                return 0
-            }
-
-        default:
-            print("Enter Flip to fetch the count")
-            return 0
-        }
-    }
+//    // returns the number of entries in the given entity
+//    func getCount(_ entity: String) -> Int {
+//        switch entity {
+//        case "Flip":
+//            do {
+//                let count = try context.count(for: NSFetchRequest(entityName: "Flip"))
+//                return count
+//            } catch let error as NSError {
+//                print("Error: \(error.localizedDescription)")
+//                return 0
+//            }
+//        case "headsCount":
+//            do {
+//                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
+//                fetchRequest.predicate = NSPredicate(format: "outcome == %@", 0)
+//                let count = try context.count(for: fetchRequest)
+//                return count
+//            } catch let error as NSError {
+//                print("Error: \(error.localizedDescription)")
+//                return 0
+//            }
+//
+//        default:
+//            print("Enter Flip to fetch the count")
+//            return 0
+//        }
+//    }
     
     // MARK: - Core Data Saving support
     func save() {

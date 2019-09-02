@@ -18,9 +18,9 @@ class BarChart {
     }
     
     func drawChart(_ barChartView: BarChartView) {
-        let flips = coreDataManager.fetchAllFlips()
-        let headsCount = flips!.filter({ $0.outcome == 0}).count
-        let tailsCount = flips!.filter({ $0.outcome == 1}).count
+        let flips = coreDataManager.fetchOutcomes(range: 1000)
+        let headsCount = flips["heads"]!
+        let tailsCount = flips["tails"]!
         print(headsCount + tailsCount)
         
         let swag = BarChartDataEntry(x: 0.0, y: Double(headsCount))
