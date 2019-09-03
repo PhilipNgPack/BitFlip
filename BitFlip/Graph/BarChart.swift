@@ -12,12 +12,16 @@ import Charts
 class BarChart {
     
     //MARK: - Dependency injection variable
+    
     var coreDataManager: CoreDataManager
     
     //MARK: - Initialization
+    
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
     }
+    
+    //MARK: - Draw the bar chart
     
     func drawChart(_ barChartView: BarChartView) {
         
@@ -30,18 +34,15 @@ class BarChart {
         xAxis.labelCount = labels.count
         xAxis.valueFormatter = IndexAxisValueFormatter(values:labels)
         
-        
         // MARK: leftAxis
         let leftAxis = barChartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
         leftAxis.axisMinimum = 0.0
         
-        
         // MARK: rightAxis
         let rightAxis = barChartView.rightAxis
         rightAxis.enabled = false
         rightAxis.axisMinimum = 0.0
-        
         
         // MARK: legend
         let legend = barChartView.legend
@@ -50,7 +51,6 @@ class BarChart {
         legend.verticalAlignment = .bottom
         legend.orientation = .horizontal
         legend.drawInside = false
-        
         
         // MARK: description
         barChartView.noDataText = ""
@@ -62,7 +62,6 @@ class BarChart {
         let flips = coreDataManager.fetchOutcomes(range: 1000)
         let headsCount = flips["heads"]!
         let tailsCount = flips["tails"]!
-        print(headsCount + tailsCount)
         
         let swag = BarChartDataEntry(x: 0.0, y: Double(headsCount))
         let swag2 = BarChartDataEntry(x: 1.0, y: Double(tailsCount))

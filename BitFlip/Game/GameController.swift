@@ -62,7 +62,7 @@ class GameController: UIViewController {
         flipSystem?.flipCoin()
     }
     
-    //MARK: Animations
+    // MARK: Animations
     
     // load the animation textures for coin flipping
     func loadTextures() {

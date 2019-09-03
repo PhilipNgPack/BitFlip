@@ -57,12 +57,14 @@ class CoreDataManager {
     // containing the dates and probabilities
     func fetchProbs(range: Int) -> [NSDictionary] {
         
+        //TODO: - Address the filter adding two extra points when the # flips is low
+        
         let fr = NSFetchRequest<NSDictionary>(entityName: "Flip")
-     
+        
         let end = Date()
         let start = Calendar.current.date(byAdding: DateComponents(day: -range), to: end)!
         fr.predicate = NSPredicate(format: "date > %@ AND date <= %@",
-                                                    argumentArray: [start, end])
+                                   argumentArray: [start, end])
         
         fr.propertiesToGroupBy = ["date"]
         fr.resultType = .dictionaryResultType
@@ -83,7 +85,7 @@ class CoreDataManager {
         
         // fetch it!
         let probs = try! context.fetch(fr)
-        print(probs.count)
+        print("preprocessed number of flips is \(probs.count)")
         
         // do a for loop now with fetch offset!!!
         return filterPoints(set: probs, range: range)
@@ -97,7 +99,7 @@ class CoreDataManager {
         let offset:Int = Int(ceil(points/(Float(range) * const)))
 //        print("offset is \(offset)")
         
-        newDict.append(set[set.count]) //handpicked last element(most recent flip)
+        newDict.append(set[set.count - 1]) //handpicked last element(most recent flip)
         for (index, item) in set.reversed().enumerated() {
             if index % offset == 0 {
                 newDict.append(item)

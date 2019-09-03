@@ -11,27 +11,39 @@ import Charts
 
 class GraphController: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var lineChartView: LineChartView!
+    
+    // MARK: - Depedency injection variables
+    
     var lineChart: LineChart?
     var barChart: BarChart?
+    
+    // MARK: - Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
         drawChart()
     }
     
+    // MARK: - Functions
     
+    /// Draw the barchart
     func drawChart() {
         barChart?.drawChart(barChartView)
     }
     
-    
+    /// When the right button is tapped then switch graphs
     @IBAction func rightButtonTapped(_ sender: Any) {
-        barChart?.clear(barChartView)
+        // TODO: - handle switching between graphs
+//        barChart?.clear(barChartView)
+        print("im clicking this")
+        lineChart?.drawChart(lineChartView)
     }
     
 }
