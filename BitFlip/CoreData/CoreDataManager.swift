@@ -99,13 +99,13 @@ class CoreDataManager {
         let offset:Int = Int(ceil(points/(Float(range) * const)))
 //        print("offset is \(offset)")
         
-        newDict.append(set[set.count - 1]) //handpicked last element(most recent flip)
-        for (index, item) in set.reversed().enumerated() {
+        newDict.append(set[0]) //handpicked last element(most recent flip)
+        for (index, item) in set.enumerated() {
             if index % offset == 0 {
                 newDict.append(item)
             }
         }
-        newDict.append(set[0]) //handpicked first element
+        newDict.append(set[set.count - 1]) //handpicked first element
         return newDict
     }
     

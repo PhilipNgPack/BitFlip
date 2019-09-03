@@ -25,7 +25,7 @@ class BarChart {
     
     func drawChart(_ barChartView: BarChartView) {
         
-        // MARK: xAxis
+        // MARK: - xAxis
         let xAxis = barChartView.xAxis
         xAxis.labelPosition = XAxis.LabelPosition.bottom
         xAxis.granularity = 1.0
@@ -34,17 +34,17 @@ class BarChart {
         xAxis.labelCount = labels.count
         xAxis.valueFormatter = IndexAxisValueFormatter(values:labels)
         
-        // MARK: leftAxis
+        // MARK: - leftAxis
         let leftAxis = barChartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
         leftAxis.axisMinimum = 0.0
         
-        // MARK: rightAxis
+        // MARK: - rightAxis
         let rightAxis = barChartView.rightAxis
         rightAxis.enabled = false
         rightAxis.axisMinimum = 0.0
         
-        // MARK: legend
+        // MARK: - legend
         let legend = barChartView.legend
         legend.wordWrapEnabled = true
         legend.horizontalAlignment = .center
@@ -52,7 +52,7 @@ class BarChart {
         legend.orientation = .horizontal
         legend.drawInside = false
         
-        // MARK: description
+        // MARK: - barChart settings
         barChartView.noDataText = ""
         barChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.0)
         barChartView.isUserInteractionEnabled = false

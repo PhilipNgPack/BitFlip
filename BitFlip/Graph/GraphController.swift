@@ -29,6 +29,7 @@ class GraphController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         drawChart()
+        lineChartView.noDataText = ""
     }
     
     // MARK: - Functions
@@ -41,8 +42,7 @@ class GraphController: UIViewController {
     /// When the right button is tapped then switch graphs
     @IBAction func rightButtonTapped(_ sender: Any) {
         // TODO: - handle switching between graphs
-//        barChart?.clear(barChartView)
-        print("im clicking this")
+        barChart?.clear(barChartView)        
         lineChart?.drawChart(lineChartView)
     }
     
