@@ -19,13 +19,12 @@ class LineChart {
     
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
-        
     }
     
     // MARK: - Functions
     
-    // MARK: - Draw the line chart
-    /// Create the probability chart plotting heads vs tails probabilities
+    // MARK: - Plots heads vs tails probs
+    
     func drawChart(_ lineChartView: LineChartView)  {
         
         // MARK: - xAxis
@@ -108,8 +107,4 @@ class LineChart {
         dataSet.setColor(color)
         dataSet.fillAlpha = 65 / 255.0
     }
-
-
-
-    
 }

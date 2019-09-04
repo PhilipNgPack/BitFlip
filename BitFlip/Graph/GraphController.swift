@@ -74,6 +74,7 @@ class GraphController: UIViewController {
 }
 
 // MARK: - Extension for enumeration logic
+
 extension GraphController {
     enum toggleGraphs {
         case flips

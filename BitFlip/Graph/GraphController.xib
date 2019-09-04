@@ -25,13 +25,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-kL-QiB" customClass="BarChartView" customModule="Charts">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ff9-7L-X3E" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="20" y="285" width="374" height="326"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ff9-7L-X3E" customClass="LineChartView" customModule="Charts">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd7-kL-QiB" customClass="BarChartView" customModule="Charts">
                     <rect key="frame" x="20" y="285" width="374" height="326"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9v-Ye-k9M">
@@ -59,10 +58,14 @@
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="cd7-kL-QiB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="241" id="PHM-1a-FKb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ff9-7L-X3E" secondAttribute="bottom" constant="251" id="1T3-Gw-opA"/>
+                <constraint firstItem="Ff9-7L-X3E" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="F8g-IH-urk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ff9-7L-X3E" secondAttribute="trailing" constant="20" id="NBj-0r-MMF"/>
+                <constraint firstItem="cd7-kL-QiB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="V8i-9j-sWY"/>
+                <constraint firstItem="cd7-kL-QiB" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="WRZ-26-8BK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cd7-kL-QiB" secondAttribute="trailing" constant="20" id="tWU-nJ-PNX"/>
+                <constraint firstItem="Ff9-7L-X3E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="vHh-g5-0ud"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cd7-kL-QiB" secondAttribute="bottom" constant="251" id="xyp-eS-5aZ"/>
-                <constraint firstItem="cd7-kL-QiB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="zov-q7-uXc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
