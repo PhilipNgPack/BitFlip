@@ -11,35 +11,47 @@ import CoreData
 
 struct AppDependencies {
     
+    // MARK: - Controller declarations
     var coreDataManager: CoreDataManager
-    var pageViewController: PageViewController
-    var graphController: GraphController
+    var pageViewController:PageViewController
+    var graphController:GraphController
     var gameController: GameController
     var historyController: HistoryController
+    var wagerController: WagerController
     
+    // MARK: - Chart declarations
     var barChart: BarChart
+    var lineChart: LineChart
+    
+    // MARK: - Engine declarations
     var flipSystem: FlipSystem
     
+    // MARK: - Variable assignments
     init() {
         coreDataManager = CoreDataManager(container: persistentContainer)
         pageViewController = PageViewController()
         graphController = GraphController(nibName: "GraphController", bundle: nil)
         gameController = GameController(nibName: "GameController", bundle: nil)
+        wagerController = WagerController(nibName: "WagerController", bundle: nil)
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         
         // other classes
         barChart = BarChart(coreDataManager: coreDataManager)
+        lineChart = LineChart(coreDataManager: coreDataManager)
         flipSystem = FlipSystem(coreDataManager: coreDataManager)
         
         // let's do some injection
         graphController.barChart = barChart
+        graphController.lineChart = lineChart
         gameController.flipSystem = flipSystem
+        gameController.wagerController = wagerController
         
         pageViewController.graphController = graphController
         pageViewController.gameController = gameController
         pageViewController.historyController = historyController
     }
 
+    // MARK: - Persistence declaration
      var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation

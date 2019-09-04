@@ -16,6 +16,7 @@
                 <outlet property="graphButton" destination="ZUY-dC-beb" id="UA2-uf-Ipd"/>
                 <outlet property="historyButton" destination="xkd-NR-Gmt" id="om9-V8-0fw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wagerButton" destination="9qd-KU-2Tr" id="aEc-iP-yhj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -55,6 +56,17 @@
                         <action selector="bitcoinButtonTapped:" destination="-1" eventType="touchUpInside" id="C6g-V9-xnl"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qd-KU-2Tr">
+                    <rect key="frame" x="187" y="802" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="QHu-TQ-wUV"/>
+                        <constraint firstAttribute="height" constant="40" id="Yhx-bS-Aev"/>
+                    </constraints>
+                    <state key="normal" image="wagerIcon"/>
+                    <connections>
+                        <action selector="wagerButtonTapped:" destination="-1" eventType="touchUpInside" id="RMF-lu-V1o"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xkd-NR-Gmt" secondAttribute="trailing" constant="20" id="OCA-f0-r1u"/>
@@ -62,8 +74,10 @@
                 <constraint firstItem="BZk-FJ-2OY" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-214" id="Wak-fo-FpP"/>
                 <constraint firstItem="BZk-FJ-2OY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="bZO-GO-HOn"/>
                 <constraint firstItem="BZk-FJ-2OY" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-5" id="de6-v2-S0C"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="9qd-KU-2Tr" secondAttribute="bottom" constant="20" id="dmb-aR-8qw"/>
                 <constraint firstItem="xkd-NR-Gmt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oYE-yU-5tj"/>
                 <constraint firstItem="ZUY-dC-beb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="vFy-5n-7yB"/>
+                <constraint firstItem="9qd-KU-2Tr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yzg-9U-hzW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="111.83035714285714"/>
@@ -73,5 +87,6 @@
         <image name="bitcoin1" width="240" height="256"/>
         <image name="historyIcon" width="166.66667175292969" height="166.66667175292969"/>
         <image name="lineChartIcon" width="83.333335876464844" height="83.333335876464844"/>
+        <image name="wagerIcon" width="166.66667175292969" height="166.66667175292969"/>
     </resources>
 </document>

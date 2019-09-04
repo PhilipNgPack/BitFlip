@@ -20,7 +20,8 @@ class FlipSystem {
     // flips the coin and sends the data to CoreData
     func flipCoin() {
         let coinToss = Int.random(in: 0...1)
-        _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date())        
+        _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date(), coins: 0)
+
     }
     
     

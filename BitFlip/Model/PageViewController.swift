@@ -20,7 +20,6 @@ class PageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
-        print("pageviewcontroller loaded")
         populatePages()
         let firstViewController = pages[1]
         setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -72,7 +71,6 @@ extension PageViewController: UIPageViewControllerDataSource {
         if let userInfo = notification.userInfo?["page"] as? String {
             switch userInfo {
             case "graph":
-                
                 guard let nextViewController = dataSource?.pageViewController(self, viewControllerBefore: currentViewController) else { return }
                 setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
                 

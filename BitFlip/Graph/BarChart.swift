@@ -11,57 +11,89 @@ import Charts
 
 class BarChart {
     
+    // MARK: - Dependency injection variable
+    
     var coreDataManager: CoreDataManager
+    
+    // MARK: - Initialization
     
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
     }
     
+    // MARK: - Functions
+    
+    /// Draw the bar chart comparing # of heads to # of tails
+    ///
+    /// - Parameters
+    ///     - barChartView: the BarChartView passed from the graph controller
     func drawChart(_ barChartView: BarChartView) {
-        let flips = coreDataManager.fetchAllFlips()
-        let headsCount = flips!.filter({ $0.outcome == 0}).count
-        let tailsCount = flips!.filter({ $0.outcome == 1}).count
-        print(headsCount + tailsCount)
+        
+        // xAxis
+        let xAxis = barChartView.xAxis
+        xAxis.labelPosition = XAxis.LabelPosition.bottom
+        xAxis.granularity = 1.0
+        xAxis.drawGridLinesEnabled = false
+        let labels = ["Heads ", "Tails"]
+        xAxis.labelCount = labels.count
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:labels)
+        
+        // leftAxis
+        let leftAxis = barChartView.leftAxis
+        leftAxis.drawGridLinesEnabled = false
+        leftAxis.axisMinimum = 0.0
+        
+        // rightAxis
+        let rightAxis = barChartView.rightAxis
+        rightAxis.enabled = false
+        rightAxis.axisMinimum = 0.0
+        
+        // legend
+        let legend = barChartView.legend
+        legend.wordWrapEnabled = true
+        legend.horizontalAlignment = .center
+        legend.verticalAlignment = .bottom
+        legend.orientation = .horizontal
+        legend.drawInside = false
+        
+        // barChart settings
+        barChartView.noDataText = ""
+        barChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.0)
+        barChartView.isUserInteractionEnabled = false
+        barChartView.drawGridBackgroundEnabled = false
+        barChartView.chartDescription?.enabled = false
+        
+        let flips = coreDataManager.fetchOutcomes(range: 1000)
+        let headsCount = flips["heads"]!
+        let tailsCount = flips["tails"]!
         
         let swag = BarChartDataEntry(x: 0.0, y: Double(headsCount))
         let swag2 = BarChartDataEntry(x: 1.0, y: Double(tailsCount))
         let values1 = [swag, swag2]
         
         let chartDataSet = BarChartDataSet(entries: values1, label: "flips")
-        self.prettifyDataSet(chartDataSet)
         
         let chartData = BarChartData()
         chartData.addDataSet(chartDataSet)
-        self.prettifyData(chartData)
         
         barChartView.data = chartData
-        self.prettyifyChart(barChartView)
         
+        self.prettifyData(chartData)
     }
     
+    /// Make the datapoints look nicer
+    ///
+    /// - Parameters
+    ///     - data: the flips data fetched from our database
     func prettifyData(_ data: BarChartData) {
         data.setDrawValues(false)
-        
     }
     
-    func prettifyDataSet(_ chartDataSet: BarChartDataSet) {
-        
+    /// Clear data from the chart
+    ///
+    /// - Parameters
+    ///     - barChartView: the BarChartView passed from the graph controller
+    func clear(_ barChartView: BarChartView) {
+        barChartView.clear()
     }
-    
-    func prettyifyChart(_ barChartView: BarChartView) {
-        let labels = ["Heads ", "Tails"]
-        barChartView.isUserInteractionEnabled = false
-        barChartView.xAxis.labelCount = labels.count
-        barChartView.xAxis.granularity = 1.0
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:labels)
-        barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
-        
-        barChartView.drawValueAboveBarEnabled = false
-        barChartView.drawGridBackgroundEnabled = false
-        barChartView.xAxis.drawGridLinesEnabled = false
-        barChartView.rightAxis.enabled = false
-        
-        barChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.0)
-    }
-    
 }
