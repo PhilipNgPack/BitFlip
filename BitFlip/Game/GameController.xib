@@ -85,7 +85,7 @@
     </objects>
     <resources>
         <image name="bitcoin1" width="240" height="256"/>
-        <image name="chartsIcon" width="1167" height="1167"/>
+        <image name="chartsIcon" width="389" height="389"/>
         <image name="historyIcon" width="166.66667175292969" height="166.66667175292969"/>
         <image name="wagerIcon" width="166.66667175292969" height="166.66667175292969"/>
     </resources>
