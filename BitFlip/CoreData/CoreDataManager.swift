@@ -87,8 +87,15 @@ class CoreDataManager {
         let probs = try! context.fetch(fr)
         print("preprocessed number of flips is \(probs.count)")
         
-        // do a for loop now with fetch offset!!!
-        return filterPoints(set: probs, range: range)
+        if probs.count == 0 {
+            return probs
+        }
+        else {
+            // do a for loop now with fetch offset!!!
+            return filterPoints(set: probs, range: range)
+        }
+        
+
     }
     
     // applies normalization function to reduce the number of points in a set
@@ -105,7 +112,8 @@ class CoreDataManager {
                 newDict.append(item)
             }
         }
-        newDict.append(set[set.count - 1]) //handpicked first element
+        newDict.append(set[set.count - 1])
+         //handpicked first element
         return newDict
     }
     
