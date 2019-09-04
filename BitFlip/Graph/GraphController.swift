@@ -34,7 +34,7 @@ class GraphController: UIViewController {
         super.viewDidLoad()
         updateDisplay()
         
-        // hide nodata display
+        /// hide nodata display
         lineChartView.noDataText = ""
     }
     
@@ -90,6 +90,7 @@ extension GraphController {
                 self = .flips
             }
         }
+        
         mutating func prev() {
             switch self {
             case .flips:

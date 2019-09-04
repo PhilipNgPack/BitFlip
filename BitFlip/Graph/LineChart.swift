@@ -23,26 +23,27 @@ class LineChart {
     
     // MARK: - Functions
     
-    // MARK: - Plots heads vs tails probs
-    
+    /// Plot heads vs tails probs
+    ///
+    /// - Parameters
+    ///     - lineChartView: the LineChartView passed from the graph controller
     func drawChart(_ lineChartView: LineChartView)  {
         
-        // MARK: - xAxis
+        // xAxis
         let xAxis = lineChartView.xAxis
         xAxis.labelPosition = XAxis.LabelPosition.bottom
         xAxis.drawGridLinesEnabled = false
         xAxis.drawLabelsEnabled = true
         
-        // MARK: - leftAxis
+        // leftAxis
         let leftAxis = lineChartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
         
-        //MARK: - rightAxis
+        // rightAxis
         let rightAxis = lineChartView.rightAxis
         rightAxis.enabled = false
         
-        //MARK: - lineChart settings
-        
+        // lineChart settings
         lineChartView.scaleYEnabled = false
         lineChartView.scaleXEnabled = false
         lineChartView.isUserInteractionEnabled = false
@@ -95,12 +96,19 @@ class LineChart {
         lineChartView.data = data
     }
 
-    /// Clear the chart
+    /// Clear data from the chart
+    ///
+    /// - Parameters
+    ///     - lineChartView: the LineChartView passed from the graph controller
     func clear(_ lineChartView: LineChartView) {
         lineChartView.clear()
     }
     
-    /// make the dataset look liker
+    /// Make the dataset look prettier
+    ///
+    /// - Parameters
+    ///     - dataSet: dataSet from the lineChart being generated
+    ///     - color: determines the color of the line
     func prettifyDataSet(_ dataSet: LineChartDataSet, _ color: UIColor) {
         dataSet.drawCirclesEnabled = false
         dataSet.lineWidth = 2.0
