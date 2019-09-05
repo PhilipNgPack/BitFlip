@@ -29,21 +29,27 @@ class GraphController: UIViewController {
     var currentGraph: toggleGraphs = toggleGraphs.flips
     
     // MARK: - Setup
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateDisplay()
         
         /// hide nodata display
         lineChartView.noDataText = ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateDisplay()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        clearGraphs()
     }
     
     // MARK: - Functions
     
     /// selects the current graph to display
     func updateDisplay() {
-        barChart?.clear(barChartView)
-        lineChart?.clear(lineChartView)
+        clearGraphs()
         switch currentGraph {
         case .flips:
             titleLabel.text = "Flips"
@@ -57,6 +63,12 @@ class GraphController: UIViewController {
             titleLabel.text = "Money"
             print("implement money system later lol")
         }
+    }
+    
+    /// clears the data from the graphs
+    func clearGraphs() {
+        barChart?.clear(barChartView)
+        lineChart?.clear(lineChartView)
     }
     
     /// When the right button is tapped then go to the next graph

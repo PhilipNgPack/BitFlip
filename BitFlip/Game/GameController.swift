@@ -114,7 +114,7 @@ class GameController: UIViewController {
 
 extension GameController {
     
-    // animation that makes a button shrink down, then expand past it's size and back to it's orignal size
+    // reusable shrink and grow animation
     func boingAnimation() {
         self.buttonAnim.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
         
