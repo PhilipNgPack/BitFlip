@@ -16,6 +16,7 @@ class WagerController: UIViewController {
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
+    var buttonAnim: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,10 @@ class WagerController: UIViewController {
 
     
     @IBAction func amountButtonTapped(_ sender: Any) {
+        buttonAnim = amountButton
+        boingAnimation()
         dismiss(animated: true, completion: nil)
-        // add a function to accept the new wager
+        // add a function to accept the new #imageLiteral(resourceName: "wagerCross.png")wager
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -35,11 +38,26 @@ class WagerController: UIViewController {
     }
     
     @IBAction func minusButtonTapped(_ sender: Any) {
+        buttonAnim = minusButton
+        boingAnimation()
         print("I am the minus button")
     }
     
     @IBAction func plusButtonTapped(_ sender: Any) {
+        buttonAnim = plusButton
+        boingAnimation()
         print("I am the plus button")
     }
-    
+}
+// MARK: - Animations extension
+
+extension WagerController {
+    // animation that makes a button shrink down, then expand past it's size and back to it's orignal size
+    func boingAnimation() {
+        self.buttonAnim.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 3, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
+            self.buttonAnim.transform = CGAffineTransform.identity
+        }, completion: nil )
+        
+    }
 }
