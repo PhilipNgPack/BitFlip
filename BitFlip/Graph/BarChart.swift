@@ -27,6 +27,7 @@ class BarChart {
     ///
     /// - Parameters
     ///     - barChartView: the BarChartView passed from the graph controller
+    ///
     func drawChart(_ barChartView: BarChartView) {
         
         // xAxis
@@ -85,6 +86,7 @@ class BarChart {
     ///
     /// - Parameters
     ///     - data: the flips data fetched from our database
+    ///
     func prettifyData(_ data: BarChartData) {
         data.setDrawValues(false)
     }
@@ -93,6 +95,7 @@ class BarChart {
     ///
     /// - Parameters
     ///     - barChartView: the BarChartView passed from the graph controller
+    ///
     func clear(_ barChartView: BarChartView) {
         barChartView.clear()
     }

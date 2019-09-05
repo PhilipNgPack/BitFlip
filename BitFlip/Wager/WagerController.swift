@@ -33,13 +33,13 @@ class WagerController: UIViewController {
         buttonAnim = amountButton
         boingAnimation()
         dismiss(animated: true, completion: nil)
-        //TODO: - add a function to accept the new #imageLiteral(resourceName: "wagerCross.png")wager
+        // TODO: - add a function to accept the new #imageLiteral(resourceName: "wagerCross.png")wager
     }
     
     /// Close the modal when tapping outside the modal
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-        // default to not changing the wager amount
+        // TODO: - default to not changing the wager amount
     }
     
     /// Decrease the wager
@@ -47,6 +47,7 @@ class WagerController: UIViewController {
         buttonAnim = minusButton
         boingAnimation()
         print("I am the minus button")
+        // TODO: - Add money functionality
     }
     
     /// Increase the wager
@@ -54,6 +55,7 @@ class WagerController: UIViewController {
         buttonAnim = plusButton
         boingAnimation()
         print("I am the plus button")
+        // TODO: - Add money functionality
     }
 }
 
