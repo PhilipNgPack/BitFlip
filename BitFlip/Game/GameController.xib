@@ -16,7 +16,6 @@
                 <outlet property="coin_balance" destination="aTh-3C-MLL" id="oPm-MR-gK8"/>
                 <outlet property="graphButton" destination="ZUY-dC-beb" id="UA2-uf-Ipd"/>
                 <outlet property="historyButton" destination="xkd-NR-Gmt" id="om9-V8-0fw"/>
-                <outlet property="money" destination="aTh-3C-MLL" id="YOi-VO-ciE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wagerButton" destination="9qd-KU-2Tr" id="aEc-iP-yhj"/>
             </connections>
