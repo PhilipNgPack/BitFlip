@@ -1,5 +1,5 @@
 //
-//  MoneySystem.swift
+//  WageSystem.swift
 //  BitFlip
 //
 //  Created by Sean Ng Pack on 9/6/19.
@@ -7,22 +7,22 @@
 //
 
 import Foundation
+
+import Foundation
 import CoreData
 
-class MoneySystem {
+class WagerSystem {
     
     var coreDataManager: CoreDataManager?
-    var wagerSystem: WagerSystem?
     
-    init(coreDataManager: CoreDataManager, wagerSystem: WagerSystem) {
+    init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
-        self.wagerSystem = wagerSystem
     }
     
     // updates the current balance
-    func updateBalance() {
-        print("updating balance...")
-        wagerSystem?.printWager()
+    func printWager() {
+        print("This is the wager system")
+        
     }
     
 }

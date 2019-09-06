@@ -26,6 +26,7 @@ struct AppDependencies {
     // MARK: - Engine declarations
     var flipSystem: FlipSystem
     var moneySystem: MoneySystem
+    var wagerSystem: WagerSystem
     
     // MARK: - Variable assignments
     init() {
@@ -41,7 +42,8 @@ struct AppDependencies {
         lineChart = LineChart(coreDataManager: coreDataManager)
         
         // engines & systems
-        moneySystem = MoneySystem(coreDataManager: coreDataManager)
+        wagerSystem = WagerSystem(coreDataManager: coreDataManager)
+        moneySystem = MoneySystem(coreDataManager: coreDataManager, wagerSystem: wagerSystem)
         flipSystem = FlipSystem(coreDataManager: coreDataManager, moneySystem: moneySystem)
         
         // let's do some injection
@@ -54,7 +56,6 @@ struct AppDependencies {
         pageViewController.gameController = gameController
         pageViewController.historyController = historyController
         
-        flipSystem.moneySystem = moneySystem
     }
 
     // MARK: - Persistence declaration

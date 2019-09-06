@@ -22,6 +22,7 @@
 		48096D6D2311E855007FF518 /* HistoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48096D6B2311E855007FF518 /* HistoryController.xib */; };
 		480A91BD2318AABA0096D3A0 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480A91BC2318AABA0096D3A0 /* AppDependencies.swift */; };
 		480C057223228CCC00D4106C /* MoneySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C057123228CCC00D4106C /* MoneySystem.swift */; };
+		480C0574232292B200D4106C /* WagerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480C0573232292B200D4106C /* WagerSystem.swift */; };
 		481338A92314D06A000C0EAF /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481338A82314D06A000C0EAF /* BarChart.swift */; };
 		481338AB231625E3000C0EAF /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481338AA231625E3000C0EAF /* PageViewController.swift */; };
 		48145A88231D99F00029660C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48145A87231D99F00029660C /* LineChart.swift */; };
@@ -70,6 +71,7 @@
 		48096D6B2311E855007FF518 /* HistoryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryController.xib; sourceTree = "<group>"; };
 		480A91BC2318AABA0096D3A0 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		480C057123228CCC00D4106C /* MoneySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneySystem.swift; sourceTree = "<group>"; };
+		480C0573232292B200D4106C /* WagerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerSystem.swift; sourceTree = "<group>"; };
 		481338A82314D06A000C0EAF /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		481338AA231625E3000C0EAF /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		48145A87231D99F00029660C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				48561D6C2311FA05008E589B /* FlipSystem.swift */,
 				480C057123228CCC00D4106C /* MoneySystem.swift */,
+				480C0573232292B200D4106C /* WagerSystem.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				4AE74B44231AEEDD00F4F5ED /* SlideDownAnimationController.swift in Sources */,
 				48096D6C2311E855007FF518 /* HistoryController.swift in Sources */,
 				48096D392311E796007FF518 /* AppDelegate.swift in Sources */,
+				480C0574232292B200D4106C /* WagerSystem.swift in Sources */,
 				48E83A382311F3E400D07DA5 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
