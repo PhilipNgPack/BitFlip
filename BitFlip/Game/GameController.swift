@@ -12,6 +12,7 @@ class GameController: UIViewController {
 
     // MARK: Outlet Variables
     
+    @IBOutlet weak var coin_balance: UILabel!
     @IBOutlet weak var graphButton: UIButton!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var bitcoinButton: UIButton!
@@ -27,8 +28,8 @@ class GameController: UIViewController {
     // MARK: Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadTextures()
+        // TODO: display the label with the current amount of money
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,22 +64,35 @@ class GameController: UIViewController {
         buttonAnim = wagerButton
         boingAnimation()
         wagerController.modalPresentationStyle = .custom
-//        wagerController.transitioningDelegate = self
         present(wagerController, animated: true, completion: nil)
     }
     
     @IBAction func bitcoinButtonTapped(_ sender: Any) {
         flipCoinAnim()
         flipSystem?.flipCoin()
-    }
-    
-    // MARK: Animations
+        // TODO: - Set the label to the new amount of money -- probs will be in the flipCoin method
+    }    
+}
+
+// MARK: - Animations extension
+
+extension GameController {
     
     // load the animation textures for coin flipping
     func loadTextures() {
         for i in 1...8 {
             self.bitCoinPhases.append(UIImage(named: "bitcoin\(i)")!)
         }
+    }
+    
+    // reusable shrink and grow animation
+    func boingAnimation() {
+        self.buttonAnim.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 3, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
+            self.buttonAnim.transform = CGAffineTransform.identity
+        }, completion: nil )
+        
     }
     
     // bouncing animations for the coin
@@ -109,26 +123,3 @@ class GameController: UIViewController {
         }
     }
 }
-
-// MARK: - Animations extension
-
-extension GameController {
-    
-    // reusable shrink and grow animation
-    func boingAnimation() {
-        self.buttonAnim.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-        
-        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 3, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
-            self.buttonAnim.transform = CGAffineTransform.identity
-        }, completion: nil )
-        
-    }
-}
-
-//extension GameController: UIViewControllerTransitioningDelegate {
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?
-//
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
-//}
-//
-//

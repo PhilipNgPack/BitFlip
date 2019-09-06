@@ -18,6 +18,8 @@ class CoreDataManager {
         self.container = container
         self.context = container.viewContext
     }
+    
+    // Fetches the most recent 
 
     // fetches all the Flip objects
     func fetchAllFlips() -> [Flip]? {

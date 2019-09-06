@@ -13,8 +13,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameController" customModule="BitFlip" customModuleProvider="target">
             <connections>
                 <outlet property="bitcoinButton" destination="BZk-FJ-2OY" id="ecu-KU-Kng"/>
+                <outlet property="coin_balance" destination="aTh-3C-MLL" id="oPm-MR-gK8"/>
                 <outlet property="graphButton" destination="ZUY-dC-beb" id="UA2-uf-Ipd"/>
                 <outlet property="historyButton" destination="xkd-NR-Gmt" id="om9-V8-0fw"/>
+                <outlet property="money" destination="aTh-3C-MLL" id="YOi-VO-ciE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wagerButton" destination="9qd-KU-2Tr" id="aEc-iP-yhj"/>
             </connections>
@@ -67,6 +69,13 @@
                         <action selector="wagerButtonTapped:" destination="-1" eventType="touchUpInside" id="RMF-lu-V1o"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTh-3C-MLL">
+                    <rect key="frame" x="187" y="54" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xkd-NR-Gmt" secondAttribute="trailing" constant="20" id="OCA-f0-r1u"/>
