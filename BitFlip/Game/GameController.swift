@@ -22,7 +22,9 @@ class GameController: UIViewController {
     var flipSystem: FlipSystem?
     var wagerController: WagerController!
     
-    // MARK: Functions
+    var buttonAnim: UIButton!
+    
+    // MARK: Setup
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +39,11 @@ class GameController: UIViewController {
         self.view.layer.removeAllAnimations()
     }
     
+    // MARK: Buttons
+    
     @IBAction func graphButtonTapped(_ sender: Any) {
+        buttonAnim = graphButton
+        boingAnimation()
         let payload = ["page" : "graph"]
         NotificationCenter.default.post(name: .goToPageNotif,
                                         object: nil,
@@ -45,6 +51,8 @@ class GameController: UIViewController {
     }
     
     @IBAction func historyButtonTapped(_ sender: Any) {
+        buttonAnim = historyButton
+        boingAnimation()
         let payload = ["page" : "history"]
         NotificationCenter.default.post(name: .goToPageNotif,
                                         object: nil,
@@ -52,6 +60,8 @@ class GameController: UIViewController {
     }
 
     @IBAction func wagerButtonTapped(_ sender: Any) {
+        buttonAnim = wagerButton
+        boingAnimation()
         wagerController.modalPresentationStyle = .custom
 //        wagerController.transitioningDelegate = self
         present(wagerController, animated: true, completion: nil)
@@ -97,6 +107,21 @@ class GameController: UIViewController {
             self.bitcoinButton.imageView!.stopAnimating()
             self.view.isUserInteractionEnabled = true;
         }
+    }
+}
+
+// MARK: - Animations extension
+
+extension GameController {
+    
+    // reusable shrink and grow animation
+    func boingAnimation() {
+        self.buttonAnim.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 3, initialSpringVelocity: 2, options: .curveEaseOut, animations: {
+            self.buttonAnim.transform = CGAffineTransform.identity
+        }, completion: nil )
+        
     }
 }
 

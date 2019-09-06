@@ -34,7 +34,7 @@ class LineChart {
         xAxis.labelPosition = XAxis.LabelPosition.bottom
         xAxis.drawGridLinesEnabled = false
         xAxis.drawLabelsEnabled = true
-        
+
         // leftAxis
         let leftAxis = lineChartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
@@ -44,6 +44,8 @@ class LineChart {
         rightAxis.enabled = false
         
         // lineChart settings
+        lineChartView.leftAxis.spaceBottom = 0.0
+        lineChartView.legend.enabled = false
         lineChartView.scaleYEnabled = false
         lineChartView.scaleXEnabled = false
         lineChartView.isUserInteractionEnabled = false
@@ -58,8 +60,8 @@ class LineChart {
         let count = flips.count
         
         for dict in flips {
-            headsProbs.append(dict["headsProb"] as! Double)
-            tailsProbs.append(dict["tailsProb"] as! Double)
+            headsProbs.append(dict["headsProb"] as! Double * 100)
+            tailsProbs.append(dict["tailsProb"] as! Double * 100)
         }
 
         // first set is the heads probability
@@ -91,24 +93,23 @@ class LineChart {
 
         // pass in the dataset into the Data
         let data = LineChartData(dataSets: dataSets)
-
+        prettifyData(data)
+        
         // finally set our data
         lineChartView.data = data
     }
+    
+    /// Make the dataset look nicer
+    func prettifyData(_ data: LineChartData) {
+        data.setDrawValues(false)
+    }
 
     /// Clear data from the chart
-    ///
-    /// - Parameters
-    ///     - lineChartView: the LineChartView passed from the graph controller
     func clear(_ lineChartView: LineChartView) {
         lineChartView.clear()
     }
     
     /// Make the dataset look prettier
-    ///
-    /// - Parameters
-    ///     - dataSet: dataSet from the lineChart being generated
-    ///     - color: determines the color of the line
     func prettifyDataSet(_ dataSet: LineChartDataSet, _ color: UIColor) {
         dataSet.drawCirclesEnabled = false
         dataSet.lineWidth = 2.0

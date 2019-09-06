@@ -27,6 +27,7 @@ class BarChart {
     ///
     /// - Parameters
     ///     - barChartView: the BarChartView passed from the graph controller
+    ///
     func drawChart(_ barChartView: BarChartView) {
         
         // xAxis
@@ -42,6 +43,8 @@ class BarChart {
         let leftAxis = barChartView.leftAxis
         leftAxis.drawGridLinesEnabled = false
         leftAxis.axisMinimum = 0.0
+        leftAxis.granularityEnabled = true
+        leftAxis.granularity = 1.0
         
         // rightAxis
         let rightAxis = barChartView.rightAxis
@@ -50,6 +53,7 @@ class BarChart {
         
         // legend
         let legend = barChartView.legend
+        legend.enabled = false
         legend.wordWrapEnabled = true
         legend.horizontalAlignment = .center
         legend.verticalAlignment = .bottom
@@ -57,6 +61,7 @@ class BarChart {
         legend.drawInside = false
         
         // barChart settings
+        barChartView.minOffset = 0
         barChartView.noDataText = ""
         barChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.0)
         barChartView.isUserInteractionEnabled = false
@@ -82,17 +87,11 @@ class BarChart {
     }
     
     /// Make the datapoints look nicer
-    ///
-    /// - Parameters
-    ///     - data: the flips data fetched from our database
     func prettifyData(_ data: BarChartData) {
         data.setDrawValues(false)
     }
     
     /// Clear data from the chart
-    ///
-    /// - Parameters
-    ///     - barChartView: the BarChartView passed from the graph controller
     func clear(_ barChartView: BarChartView) {
         barChartView.clear()
     }

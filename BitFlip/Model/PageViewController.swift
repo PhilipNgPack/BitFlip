@@ -59,8 +59,6 @@ extension PageViewController: UIPageViewControllerDataSource {
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
         let currentIndex = pages.firstIndex(of: viewController)!
         let nextIndex = currentIndex + 1
-        
-        // insert code here to clear graph data to save memory
         return (nextIndex == pages.count) ? nil : pages[nextIndex]
     }
     
