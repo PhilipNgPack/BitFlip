@@ -25,7 +25,6 @@ struct AppDependencies {
     
     // MARK: - Engine declarations
     var flipSystem: FlipSystem
-    var moneySystem: MoneySystem
     
     // MARK: - Variable assignments
     init() {
@@ -36,13 +35,10 @@ struct AppDependencies {
         wagerController = WagerController(nibName: "WagerController", bundle: nil)
         historyController = HistoryController(nibName: "HistoryController", bundle: nil)
         
-        // charts
+        // other classes
         barChart = BarChart(coreDataManager: coreDataManager)
         lineChart = LineChart(coreDataManager: coreDataManager)
-        
-        // engines & systems
-        moneySystem = MoneySystem(coreDataManager: coreDataManager)
-        flipSystem = FlipSystem(coreDataManager: coreDataManager, moneySystem: moneySystem)
+        flipSystem = FlipSystem(coreDataManager: coreDataManager)
         
         // let's do some injection
         graphController.barChart = barChart
@@ -53,8 +49,6 @@ struct AppDependencies {
         pageViewController.graphController = graphController
         pageViewController.gameController = gameController
         pageViewController.historyController = historyController
-        
-        flipSystem.moneySystem = moneySystem
     }
 
     // MARK: - Persistence declaration

@@ -25,7 +25,8 @@ class FlipSystem {
         _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date(), coins: 0)
         
         // TODO: Implement money system and display the latest coin blaances
-        moneySystem?.updateBalance()
+        var swag = coreDataManager?.fetchMostRecent()
+        print(swag![0].coins)
     }
     
 }

@@ -20,8 +20,6 @@ class MoneySystem {
     // flips the coin and sends the data to CoreData
     func updateBalance() {
         print("updating balance...")
-//        var swag = coreDataManager?.fetchMostRecent()
-//        print(swag![0].coins)
     }
     
 }
