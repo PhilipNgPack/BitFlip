@@ -12,17 +12,16 @@ import CoreData
 class MoneySystem {
     
     var coreDataManager: CoreDataManager?
-    var wagerSystem: WagerSystem?
     
-    init(coreDataManager: CoreDataManager, wagerSystem: WagerSystem) {
+    init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
-        self.wagerSystem = wagerSystem
     }
     
-    // updates the current balance
+    // flips the coin and sends the data to CoreData
     func updateBalance() {
         print("updating balance...")
-        wagerSystem?.printWager()
+//        var swag = coreDataManager?.fetchMostRecent()
+//        print(swag![0].coins)
     }
     
 }
