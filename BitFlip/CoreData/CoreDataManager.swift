@@ -11,68 +11,16 @@ import CoreData
 
 class CoreDataManager {
     
-    // MARK: - Dependency injection variables
     var container: NSPersistentContainer?
     var context: NSManagedObjectContext
-    
-    // MARK: - Initialization
     
     init(container: NSPersistentContainer) {
         self.container = container
         self.context = container.viewContext
     }
     
-    // adds a flip to the context manager and saves it
-    func insertFlip(outcome: Int16, date : Date, coins : Int32) -> Flip? {
-        let allOutcomes = fetchOutcomes(range: 10000)
-        var heads:Double = Double(allOutcomes["heads"]!)
-        var tails:Double = Double(allOutcomes["tails"]!)
-        
-        if outcome == 0 {
-            heads += 1
-        }
-        else {
-            tails += 1
-        }
-        
-        let total:Double = heads + tails
-        let headsProb:Double = Double(heads/total)
-        let tailsProb:Double = Double(tails/total)
-        let entity = NSEntityDescription.entity(forEntityName: "Flip",
-                                                in: context)!
-        let flip = NSManagedObject(entity: entity,
-                                   insertInto: context)
-        flip.setValue(outcome, forKeyPath: "outcome")
-        flip.setValue(date, forKeyPath: "date")
-        flip.setValue(coins, forKey: "coins")
-        flip.setValue(tailsProb, forKeyPath: "tailsProb")
-        flip.setValue(headsProb, forKeyPath: "headsProb")
-        
-        save()
-        return flip as? Flip
-    }
-}
+    // Fetches the most recent 
 
-// MARK: - Fetching methods
-
-extension CoreDataManager {
-    
-    // Fetches the most recent
-    func fetchMostRecent() -> [Flip]? {
-        let fetch = NSFetchRequest<Flip>(entityName: "Flip")
-        let dateSort = NSSortDescriptor.init(key: "date", ascending: false)
-        
-        fetch.sortDescriptors = [dateSort]
-        do {
-            let flip = try context.fetch(fetch)
-            return flip as? [Flip]
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return nil
-        }
-    }
-    
-    
     // fetches all the Flip objects
     func fetchAllFlips() -> [Flip]? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Flip")
@@ -93,7 +41,7 @@ extension CoreDataManager {
         
         let headsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
         headsRequest.predicate = NSPredicate(format: "date > %@ AND date <= %@ AND outcome == %@",
-                                             argumentArray: [start, end, 0])
+                                        argumentArray: [start, end, 0])
         headsRequest.resultType = .countResultType
         
         let tailsRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Flip")
@@ -148,6 +96,8 @@ extension CoreDataManager {
             // do a for loop now with fetch offset!!!
             return filterPoints(set: probs, range: range)
         }
+        
+
     }
     
     // applies normalization function to reduce the number of points in a set
@@ -156,30 +106,59 @@ extension CoreDataManager {
         let points:Float = Float(set.count)
         let const:Float = 5.0
         let offset:Int = Int(ceil(points/(Float(range) * const)))
-        //        print("offset is \(offset)")
+//        print("offset is \(offset)")
         
-        newDict.append(set[0])                      //handpicked last element(most recent flip)
+        newDict.append(set[0]) //handpicked last element(most recent flip)
         for (index, item) in set.enumerated() {
             if index % offset == 0 {
                 newDict.append(item)
             }
         }
-        newDict.append(set[set.count - 1])          // handpicked first element
+        newDict.append(set[set.count - 1])
+         //handpicked first element
         return newDict
     }
-}
-
-// MARK: - Core Data Saving support
-
-extension CoreDataManager {
     
+    // adds a flip to the context manager and saves it
+    func insertFlip(outcome: Int16, date : Date, coins : Int32) -> Flip? {
+        let allOutcomes = fetchOutcomes(range: 10000)
+        var heads:Double = Double(allOutcomes["heads"]!)
+        var tails:Double = Double(allOutcomes["tails"]!)
+        
+        if outcome == 0 {
+            heads += 1
+        }
+        else {
+            tails += 1
+        }
+        
+        let total:Double = heads + tails
+        
+        let headsProb:Double = Double(heads/total)
+        let tailsProb:Double = Double(tails/total)
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Flip",
+                                                in: context)!
+        let flip = NSManagedObject(entity: entity,
+                                   insertInto: context)
+        flip.setValue(outcome, forKeyPath: "outcome")
+        flip.setValue(date, forKeyPath: "date")
+        flip.setValue(coins, forKey: "coins")
+        flip.setValue(tailsProb, forKeyPath: "tailsProb")
+        flip.setValue(headsProb, forKeyPath: "headsProb")
+        
+        save()
+        return flip as? Flip
+    }
+    
+    // MARK: - Core Data Saving support
     func save() {
         if context.hasChanges {
             do {
                 try context.save()
                 print("SAVED")
             } catch {
-                // TODO: - Replace this implementation with code to handle the error appropriately.
+                // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")

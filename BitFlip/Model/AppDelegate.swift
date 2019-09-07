@@ -50,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         coreDataManager?.save()
     }
+    
+    // MARK: Core Data Stack
+    
+    
 
 }
 

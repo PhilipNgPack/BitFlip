@@ -12,21 +12,17 @@ import CoreData
 class FlipSystem {
 
     var coreDataManager: CoreDataManager?
-    var moneySystem: MoneySystem?
     
-    init(coreDataManager: CoreDataManager, moneySystem: MoneySystem) {
+    init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager
-        self.moneySystem = moneySystem
     }
     
     // flips the coin and sends the data to CoreData
     func flipCoin() {
         let coinToss = Int.random(in: 0...1)
         _ = coreDataManager?.insertFlip(outcome: Int16(coinToss), date: Date(), coins: 0)
-        
-        // TODO: Implement money system and display the latest coin blaances
-        var swag = coreDataManager?.fetchMostRecent()
-        print(swag![0].coins)
+
     }
+    
     
 }
